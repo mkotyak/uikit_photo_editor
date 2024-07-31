@@ -6,14 +6,20 @@ class MainModuleViewController: UIViewController, UINavigationControllerDelegate
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureUI()
+        view.backgroundColor = .white
+        updateUI()
     }
 
-    private func configureUI() {
-        view.backgroundColor = .white
+    private func updateUI() {
+        navigationItem.rightBarButtonItem = nil
+        imageView.removeFromSuperview()
 
-        setupNavigationBar()
-        setupPlusButton()
+        if imageView.image == nil {
+            setupPlusButton()
+        } else {
+            setupNavigationBar()
+            setupImageEditorView()
+        }
     }
 
     private func setupNavigationBar() {
@@ -92,6 +98,23 @@ class MainModuleViewController: UIViewController, UINavigationControllerDelegate
 
         present(imagePickerController, animated: true)
     }
+
+    private func setupImageEditorView() {
+        view.addSubview(imageView)
+
+        imageView.contentMode = .scaleAspectFill
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+
+        let safeArea = view.safeAreaLayoutGuide
+        NSLayoutConstraint.activate([
+            imageView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
+            imageView.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor),
+            imageView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
+            imageView.topAnchor.constraint(equalTo: safeArea.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+        ])
+    }
 }
 
 extension MainModuleViewController: UIImagePickerControllerDelegate {
@@ -104,6 +127,7 @@ extension MainModuleViewController: UIImagePickerControllerDelegate {
         }
 
         imageView.image = selectedImage
+        updateUI()
 
         dismiss(animated: true)
     }
