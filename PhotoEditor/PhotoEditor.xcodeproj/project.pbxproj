@@ -16,6 +16,7 @@
 		7373A4D12C5A13250009E7E4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4D02C5A13250009E7E4 /* SettingsViewController.swift */; };
 		7373A4D62C5A2E870009E7E4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4D52C5A2E870009E7E4 /* SettingsViewModel.swift */; };
 		7373A4DA2C5A2EAA0009E7E4 /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4D92C5A2EAA0009E7E4 /* SettingsItem.swift */; };
+		7373A4DC2C5A3FE10009E7E4 /* SettingsDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4DB2C5A3FE10009E7E4 /* SettingsDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		7373A4D02C5A13250009E7E4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		7373A4D52C5A2E870009E7E4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		7373A4D92C5A2EAA0009E7E4 /* SettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
+		7373A4DB2C5A3FE10009E7E4 /* SettingsDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 		7373A4D32C5A2E700009E7E4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				7373A4DB2C5A3FE10009E7E4 /* SettingsDetailViewController.swift */,
 				7373A4D02C5A13250009E7E4 /* SettingsViewController.swift */,
 				7373A4D52C5A2E870009E7E4 /* SettingsViewModel.swift */,
 			);
@@ -186,6 +189,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7373A4DC2C5A3FE10009E7E4 /* SettingsDetailViewController.swift in Sources */,
 				7373A4BF2C5A0DBD0009E7E4 /* TabBarController.swift in Sources */,
 				7373A4BB2C5A0DBD0009E7E4 /* AppDelegate.swift in Sources */,
 				7373A4DA2C5A2EAA0009E7E4 /* SettingsItem.swift in Sources */,
