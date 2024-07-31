@@ -1,7 +1,7 @@
 import Combine
 import Foundation
 
-final class SettingsViewModel {
+final class SettingsModuleViewModel {
     var settingsItems: CurrentValueSubject<[SettingsItem], Never> = .init([.init(title: "About Us")])
 
     // MARK: - Intents

@@ -1,12 +1,12 @@
 import Combine
 import UIKit
 
-class SettingsViewController: UIViewController {
+class SettingsModuleViewController: UIViewController {
     private enum Constants {
         static var cellIdentifier: String { "cell" }
     }
 
-    private let viewModel: SettingsViewModel = .init()
+    private let viewModel: SettingsModuleViewModel = .init()
     private var cancellables: Set<AnyCancellable> = .init()
 
     private let tableView: UITableView = .init()
@@ -64,7 +64,7 @@ class SettingsViewController: UIViewController {
         alertController.addAction(cancelAction)
         alertController.addAction(addAction)
 
-        present(alertController, animated: true, completion: nil)
+        present(alertController, animated: true)
     }
 
     private func configureTableView() {
@@ -82,11 +82,11 @@ class SettingsViewController: UIViewController {
 
 // MARK: - UITableViewDelegate
 
-extension SettingsViewController: UITableViewDelegate {
+extension SettingsModuleViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         present(
-            SettingsItemDetailsViewController(description: viewModel.settingsItems.value[indexPath.row].description),
+            SettingItemDetailsModuleViewController(description: viewModel.settingsItems.value[indexPath.row].description),
             animated: true
         )
     }
@@ -94,7 +94,7 @@ extension SettingsViewController: UITableViewDelegate {
 
 // MARK: - UITableViewDataSource
 
-extension SettingsViewController: UITableViewDataSource {
+extension SettingsModuleViewController: UITableViewDataSource {
     func tableView(
         _ tableView: UITableView,
         numberOfRowsInSection section: Int

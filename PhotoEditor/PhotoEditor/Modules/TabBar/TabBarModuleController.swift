@@ -1,17 +1,17 @@
 import UIKit
 
-class TabBarController: UITabBarController {
+class TabBarModuleController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabs()
     }
 
     private func configureTabs() {
-        let mainViewController: MainViewController = .init()
+        let mainViewController: MainModuleViewController = .init()
         mainViewController.tabBarItem.image = .init(systemName: "scribble.variable")
         mainViewController.tabBarItem.title = "Main"
 
-        let settingsViewController: SettingsViewController = .init()
+        let settingsViewController: SettingsModuleViewController = .init()
         settingsViewController.tabBarItem.image = .init(systemName: "gearshape")
         settingsViewController.tabBarItem.title = "Settings"
 
