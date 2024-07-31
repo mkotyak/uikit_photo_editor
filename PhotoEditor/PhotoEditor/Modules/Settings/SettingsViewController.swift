@@ -86,7 +86,7 @@ extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         present(
-            SettingsItemDetailViewController(text: viewModel.settingsItems.value[indexPath.row].description),
+            SettingsItemDetailsViewController(description: viewModel.settingsItems.value[indexPath.row].description),
             animated: true
         )
     }

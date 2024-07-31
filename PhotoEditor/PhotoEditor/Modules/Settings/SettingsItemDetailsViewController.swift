@@ -1,10 +1,10 @@
 import UIKit
 
-class SettingsItemDetailViewController: UIViewController {
-    private let text: String
+class SettingsItemDetailsViewController: UIViewController {
+    private let itemDescription: String
 
-    init(text: String) {
-        self.text = text
+    init(description: String) {
+        self.itemDescription = description
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -22,7 +22,7 @@ class SettingsItemDetailViewController: UIViewController {
         view.backgroundColor = .white
 
         let label: UILabel = .init()
-        label.text = text
+        label.text = itemDescription
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
