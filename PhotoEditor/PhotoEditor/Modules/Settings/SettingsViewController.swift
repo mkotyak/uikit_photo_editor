@@ -30,6 +30,7 @@ class SettingsViewController: UIViewController {
 
     private func configureHeaderView() {
         title = "Settings"
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(
             barButtonSystemItem: .add,
             target: self,
@@ -68,10 +69,12 @@ class SettingsViewController: UIViewController {
 
     private func configureTableView() {
         view.addSubview(tableView)
+
         tableView.register(
             UITableViewCell.self,
             forCellReuseIdentifier: Constants.cellIdentifier
         )
+
         tableView.delegate = self
         tableView.dataSource = self
     }
