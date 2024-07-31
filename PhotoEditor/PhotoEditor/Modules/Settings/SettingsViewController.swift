@@ -9,28 +9,14 @@ class SettingsViewController: UIViewController {
     private let viewModel: SettingsViewModel = .init()
     private var cancellables: Set<AnyCancellable> = .init()
 
-    let tableView: UITableView = .init()
+    private let tableView: UITableView = .init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.backgroundColor = .white
-        view.addSubview(tableView)
 
-        title = "Settings"
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(didTapAddButton)
-        )
-
-        tableView.register(
-            UITableViewCell.self,
-            forCellReuseIdentifier: Constants.cellIdentifier
-        )
-        tableView.delegate = self
-        tableView.dataSource = self
+        configureHeaderView()
+        configureTableView()
 
         viewModel.settingsItems.sink { [weak self] _ in
             self?.tableView.reloadData()
@@ -44,6 +30,25 @@ class SettingsViewController: UIViewController {
 
     @objc private func didTapAddButton() {
         viewModel.viewDidSelectAddNewItem(with: "New Item")
+    }
+
+    private func configureHeaderView() {
+        title = "Settings"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(didTapAddButton)
+        )
+    }
+
+    private func configureTableView() {
+        view.addSubview(tableView)
+        tableView.register(
+            UITableViewCell.self,
+            forCellReuseIdentifier: Constants.cellIdentifier
+        )
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 }
 
