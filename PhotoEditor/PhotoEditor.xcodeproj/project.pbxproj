@@ -14,6 +14,8 @@
 		7373A4C72C5A0DBF0009E7E4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7373A4C62C5A0DBF0009E7E4 /* Base */; };
 		7373A4CF2C5A131B0009E7E4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4CE2C5A131B0009E7E4 /* MainViewController.swift */; };
 		7373A4D12C5A13250009E7E4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4D02C5A13250009E7E4 /* SettingsViewController.swift */; };
+		7373A4D62C5A2E870009E7E4 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4D52C5A2E870009E7E4 /* SettingsViewModel.swift */; };
+		7373A4DA2C5A2EAA0009E7E4 /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4D92C5A2EAA0009E7E4 /* SettingsItem.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		7373A4C82C5A0DBF0009E7E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7373A4CE2C5A131B0009E7E4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7373A4D02C5A13250009E7E4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		7373A4D52C5A2E870009E7E4 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		7373A4D92C5A2EAA0009E7E4 /* SettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +62,58 @@
 		7373A4B92C5A0DBD0009E7E4 /* PhotoEditor */ = {
 			isa = PBXGroup;
 			children = (
+				7373A4D42C5A2E780009E7E4 /* Models */,
+				7373A4D22C5A2E680009E7E4 /* Modules */,
 				7373A4BA2C5A0DBD0009E7E4 /* AppDelegate.swift */,
 				7373A4BC2C5A0DBD0009E7E4 /* SceneDelegate.swift */,
 				7373A4C32C5A0DBF0009E7E4 /* Assets.xcassets */,
 				7373A4C82C5A0DBF0009E7E4 /* Info.plist */,
 				7373A4C52C5A0DBF0009E7E4 /* LaunchScreen.storyboard */,
-				7373A4CE2C5A131B0009E7E4 /* MainViewController.swift */,
-				7373A4D02C5A13250009E7E4 /* SettingsViewController.swift */,
-				7373A4BE2C5A0DBD0009E7E4 /* TabBarController.swift */,
 			);
 			path = PhotoEditor;
+			sourceTree = "<group>";
+		};
+		7373A4D22C5A2E680009E7E4 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				7373A4D72C5A2E8E0009E7E4 /* Main */,
+				7373A4D32C5A2E700009E7E4 /* Settings */,
+				7373A4D82C5A2E950009E7E4 /* TabBar */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		7373A4D32C5A2E700009E7E4 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				7373A4D02C5A13250009E7E4 /* SettingsViewController.swift */,
+				7373A4D52C5A2E870009E7E4 /* SettingsViewModel.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		7373A4D42C5A2E780009E7E4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7373A4D92C5A2EAA0009E7E4 /* SettingsItem.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		7373A4D72C5A2E8E0009E7E4 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				7373A4CE2C5A131B0009E7E4 /* MainViewController.swift */,
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		7373A4D82C5A2E950009E7E4 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				7373A4BE2C5A0DBD0009E7E4 /* TabBarController.swift */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -142,9 +188,11 @@
 			files = (
 				7373A4BF2C5A0DBD0009E7E4 /* TabBarController.swift in Sources */,
 				7373A4BB2C5A0DBD0009E7E4 /* AppDelegate.swift in Sources */,
+				7373A4DA2C5A2EAA0009E7E4 /* SettingsItem.swift in Sources */,
 				7373A4BD2C5A0DBD0009E7E4 /* SceneDelegate.swift in Sources */,
 				7373A4D12C5A13250009E7E4 /* SettingsViewController.swift in Sources */,
 				7373A4CF2C5A131B0009E7E4 /* MainViewController.swift in Sources */,
+				7373A4D62C5A2E870009E7E4 /* SettingsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
