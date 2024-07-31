@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		7373A4BB2C5A0DBD0009E7E4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4BA2C5A0DBD0009E7E4 /* AppDelegate.swift */; };
 		7373A4BD2C5A0DBD0009E7E4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4BC2C5A0DBD0009E7E4 /* SceneDelegate.swift */; };
-		7373A4BF2C5A0DBD0009E7E4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4BE2C5A0DBD0009E7E4 /* ViewController.swift */; };
-		7373A4C22C5A0DBD0009E7E4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7373A4C12C5A0DBD0009E7E4 /* Base */; };
+		7373A4BF2C5A0DBD0009E7E4 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4BE2C5A0DBD0009E7E4 /* TabBarController.swift */; };
 		7373A4C42C5A0DBF0009E7E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7373A4C32C5A0DBF0009E7E4 /* Assets.xcassets */; };
 		7373A4C72C5A0DBF0009E7E4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7373A4C62C5A0DBF0009E7E4 /* Base */; };
+		7373A4CF2C5A131B0009E7E4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4CE2C5A131B0009E7E4 /* MainViewController.swift */; };
+		7373A4D12C5A13250009E7E4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4D02C5A13250009E7E4 /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		7373A4B72C5A0DBD0009E7E4 /* PhotoEditor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoEditor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7373A4BA2C5A0DBD0009E7E4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		7373A4BC2C5A0DBD0009E7E4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		7373A4BE2C5A0DBD0009E7E4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		7373A4C12C5A0DBD0009E7E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7373A4BE2C5A0DBD0009E7E4 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		7373A4C32C5A0DBF0009E7E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7373A4C62C5A0DBF0009E7E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7373A4C82C5A0DBF0009E7E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7373A4CE2C5A131B0009E7E4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		7373A4D02C5A13250009E7E4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,11 +60,12 @@
 			children = (
 				7373A4BA2C5A0DBD0009E7E4 /* AppDelegate.swift */,
 				7373A4BC2C5A0DBD0009E7E4 /* SceneDelegate.swift */,
-				7373A4BE2C5A0DBD0009E7E4 /* ViewController.swift */,
-				7373A4C02C5A0DBD0009E7E4 /* Main.storyboard */,
 				7373A4C32C5A0DBF0009E7E4 /* Assets.xcassets */,
-				7373A4C52C5A0DBF0009E7E4 /* LaunchScreen.storyboard */,
 				7373A4C82C5A0DBF0009E7E4 /* Info.plist */,
+				7373A4C52C5A0DBF0009E7E4 /* LaunchScreen.storyboard */,
+				7373A4CE2C5A131B0009E7E4 /* MainViewController.swift */,
+				7373A4D02C5A13250009E7E4 /* SettingsViewController.swift */,
+				7373A4BE2C5A0DBD0009E7E4 /* TabBarController.swift */,
 			);
 			path = PhotoEditor;
 			sourceTree = "<group>";
@@ -127,7 +130,6 @@
 			files = (
 				7373A4C42C5A0DBF0009E7E4 /* Assets.xcassets in Resources */,
 				7373A4C72C5A0DBF0009E7E4 /* Base in Resources */,
-				7373A4C22C5A0DBD0009E7E4 /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,23 +140,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7373A4BF2C5A0DBD0009E7E4 /* ViewController.swift in Sources */,
+				7373A4BF2C5A0DBD0009E7E4 /* TabBarController.swift in Sources */,
 				7373A4BB2C5A0DBD0009E7E4 /* AppDelegate.swift in Sources */,
 				7373A4BD2C5A0DBD0009E7E4 /* SceneDelegate.swift in Sources */,
+				7373A4D12C5A13250009E7E4 /* SettingsViewController.swift in Sources */,
+				7373A4CF2C5A131B0009E7E4 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		7373A4C02C5A0DBD0009E7E4 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				7373A4C12C5A0DBD0009E7E4 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		7373A4C52C5A0DBF0009E7E4 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -296,7 +292,7 @@
 				INFOPLIST_FILE = PhotoEditor/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
@@ -328,7 +324,7 @@
 				INFOPLIST_FILE = PhotoEditor/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
