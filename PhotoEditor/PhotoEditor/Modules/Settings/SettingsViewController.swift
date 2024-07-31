@@ -28,10 +28,6 @@ class SettingsViewController: UIViewController {
         tableView.frame = view.bounds
     }
 
-    @objc private func didTapAddButton() {
-        viewModel.viewDidSelectAddNewItem(with: "New Item")
-    }
-
     private func configureHeaderView() {
         title = "Settings"
         navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -39,6 +35,35 @@ class SettingsViewController: UIViewController {
             target: self,
             action: #selector(didTapAddButton)
         )
+    }
+
+    @objc private func didTapAddButton() {
+        let alertController: UIAlertController = .init(
+            title: "New Item",
+            message: "Enter a name for the new item",
+            preferredStyle: .alert
+        )
+
+        alertController.addTextField { textField in
+            textField.placeholder = "Item name"
+        }
+
+        let cancelAction: UIAlertAction = .init(title: "Cancel", style: .cancel)
+        let addAction: UIAlertAction = .init(title: "Add", style: .default) { [weak self] _ in
+            guard let textField = alertController.textFields?.first,
+                  let text = textField.text,
+                  !text.isEmpty
+            else {
+                return
+            }
+
+            self?.viewModel.viewDidAddNewItem(with: text)
+        }
+
+        alertController.addAction(cancelAction)
+        alertController.addAction(addAction)
+
+        present(alertController, animated: true, completion: nil)
     }
 
     private func configureTableView() {
@@ -58,7 +83,7 @@ extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         present(
-            SettingsDetailViewController(text: viewModel.settingsItems.value[indexPath.row].description),
+            SettingsItemDetailViewController(text: viewModel.settingsItems.value[indexPath.row].description),
             animated: true
         )
     }

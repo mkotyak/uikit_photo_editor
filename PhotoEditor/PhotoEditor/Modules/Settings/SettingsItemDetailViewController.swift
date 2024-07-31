@@ -1,6 +1,6 @@
 import UIKit
 
-class SettingsDetailViewController: UIViewController {
+class SettingsItemDetailViewController: UIViewController {
     private let text: String
 
     init(text: String) {

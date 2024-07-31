@@ -6,7 +6,7 @@ final class SettingsViewModel {
 
     // MARK: - Intents
 
-    func viewDidSelectAddNewItem(with title: String) {
+    func viewDidAddNewItem(with title: String) {
         settingsItems.value.append(
             .init(title: title)
         )
