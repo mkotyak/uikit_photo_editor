@@ -3,16 +3,21 @@ import UIKit
 class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-
         configureUI()
     }
 
     private func configureUI() {
+        view.backgroundColor = .white
+
+        setupNavigationBar()
+        setupPlusImageView()
+    }
+
+    private func setupNavigationBar() {
         navigationItem.rightBarButtonItem = saveBarButton
     }
 
-    private var saveBarButton: UIBarButtonItem {
+    private lazy var saveBarButton: UIBarButtonItem = {
         let imageView: UIImageView = .init(image: .init(named: "externaldrive"))
         imageView.contentMode = .scaleAspectFit
 
@@ -39,9 +44,36 @@ class MainViewController: UIViewController {
         containerView.addGestureRecognizer(tapGesture)
 
         return UIBarButtonItem(customView: containerView)
-    }
+    }()
 
     @objc private func didTapSaveButton() {
         debugPrint("didTapSaveButton")
+    }
+
+    private func setupPlusImageView() {
+        view.addSubview(plusImageView)
+
+        NSLayoutConstraint.activate([
+            plusImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            plusImageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            plusImageView.widthAnchor.constraint(equalToConstant: 80),
+            plusImageView.heightAnchor.constraint(equalToConstant: 80)
+        ])
+    }
+
+    private lazy var plusImageView: UIImageView = {
+        let plusImageView = UIImageView(image: UIImage(systemName: "plus"))
+        plusImageView.translatesAutoresizingMaskIntoConstraints = false
+        plusImageView.contentMode = .scaleAspectFit
+        plusImageView.isUserInteractionEnabled = true
+
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(plusImageTapped))
+        plusImageView.addGestureRecognizer(tapGestureRecognizer)
+
+        return plusImageView
+    }()
+
+    @objc private func plusImageTapped() {
+        debugPrint("plusImageTapped")
     }
 }
