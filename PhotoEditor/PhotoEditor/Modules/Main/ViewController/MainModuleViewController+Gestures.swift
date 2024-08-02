@@ -20,4 +20,14 @@ extension MainModuleViewController {
             gesture.rotation = 0
         }
     }
+
+    @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
+        guard let view = gesture.view else {
+            return
+        }
+
+        let translation = gesture.translation(in: view.superview)
+        view.center = CGPoint(x: view.center.x + translation.x, y: view.center.y + translation.y)
+        gesture.setTranslation(.zero, in: view.superview)
+    }
 }

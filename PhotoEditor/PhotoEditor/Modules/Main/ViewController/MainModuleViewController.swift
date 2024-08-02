@@ -144,5 +144,9 @@ class MainModuleViewController: UIViewController {
         imageView.addGestureRecognizer(
             UIRotationGestureRecognizer(target: self, action: #selector(handleRotation))
         )
+
+        imageView.addGestureRecognizer(
+            UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        )
     }
 }
