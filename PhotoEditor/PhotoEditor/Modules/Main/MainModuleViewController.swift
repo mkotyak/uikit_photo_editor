@@ -1,12 +1,26 @@
+import Combine
 import UIKit
 
 class MainModuleViewController: UIViewController, UINavigationControllerDelegate {
     private let viewModel: MainModuleViewModel = .init()
+    private var cancellables: Set<AnyCancellable> = .init()
+
     private let imageView: UIImageView = .init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+
+        viewModel.selectedImage.sink { [weak self] newImage in
+            guard let self else {
+                return
+            }
+
+            imageView.image = newImage
+            updateUI()
+        }
+        .store(in: &cancellables)
+
         updateUI()
     }
 
@@ -18,7 +32,7 @@ class MainModuleViewController: UIViewController, UINavigationControllerDelegate
             setupPlusButton()
         } else {
             setupNavigationBar()
-            setupImageEditorView()
+            setupImageView()
         }
     }
 
@@ -88,7 +102,11 @@ class MainModuleViewController: UIViewController, UINavigationControllerDelegate
             ])
         }
 
-        plusButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
+        plusButton.addTarget(
+            self,
+            action: #selector(plusButtonTapped),
+            for: .touchUpInside
+        )
     }
 
     @objc private func plusButtonTapped() {
@@ -99,11 +117,12 @@ class MainModuleViewController: UIViewController, UINavigationControllerDelegate
         present(imagePickerController, animated: true)
     }
 
-    private func setupImageEditorView() {
-        view.addSubview(imageView)
-
-        imageView.contentMode = .scaleAspectFill
+    private func setupImageView() {
+        imageView.contentMode = .scaleAspectFit
+        imageView.isUserInteractionEnabled = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
+
+        view.addSubview(imageView)
 
         let safeArea = view.safeAreaLayoutGuide
         NSLayoutConstraint.activate([
@@ -114,6 +133,18 @@ class MainModuleViewController: UIViewController, UINavigationControllerDelegate
             imageView.topAnchor.constraint(equalTo: safeArea.topAnchor),
             imageView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
+
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch))
+        imageView.addGestureRecognizer(pinchGesture)
+    }
+
+    @objc private func handlePinch(_ gesture: UIPinchGestureRecognizer) {
+        guard let view = gesture.view else {
+            return
+        }
+
+        view.transform = view.transform.scaledBy(x: gesture.scale, y: gesture.scale)
+        gesture.scale = 1
     }
 }
 
@@ -126,9 +157,7 @@ extension MainModuleViewController: UIImagePickerControllerDelegate {
             return
         }
 
-        imageView.image = selectedImage
-        updateUI()
-
+        viewModel.viewDidSelectImage(selectedImage)
         dismiss(animated: true)
     }
 }

@@ -18,7 +18,7 @@ class TabBarModuleController: UITabBarController {
         let mainNavigationViewController: UINavigationController = .init(rootViewController: mainViewController)
         let settingNavigationViewController: UINavigationController = .init(rootViewController: settingsViewController)
 
-        tabBar.tintColor = .label
+        tabBar.tintColor = .black
         tabBar.backgroundColor = .white
 
         setViewControllers(
