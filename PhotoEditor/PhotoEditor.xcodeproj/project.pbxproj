@@ -18,6 +18,9 @@
 		7373A4DA2C5A2EAA0009E7E4 /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4D92C5A2EAA0009E7E4 /* SettingsItem.swift */; };
 		7373A4DC2C5A3FE10009E7E4 /* SettingItemDetailsModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4DB2C5A3FE10009E7E4 /* SettingItemDetailsModuleViewController.swift */; };
 		7373A4DE2C5A76D30009E7E4 /* MainModuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4DD2C5A76D30009E7E4 /* MainModuleViewModel.swift */; };
+		738113612C5CF35F0058AC0D /* MainModuleViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113602C5CF35F0058AC0D /* MainModuleViewController+Gestures.swift */; };
+		738113642C5CF42D0058AC0D /* MainModuleViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113632C5CF42D0058AC0D /* MainModuleViewController+Delegates.swift */; };
+		738113682C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113672C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +37,9 @@
 		7373A4D92C5A2EAA0009E7E4 /* SettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
 		7373A4DB2C5A3FE10009E7E4 /* SettingItemDetailsModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemDetailsModuleViewController.swift; sourceTree = "<group>"; };
 		7373A4DD2C5A76D30009E7E4 /* MainModuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleViewModel.swift; sourceTree = "<group>"; };
+		738113602C5CF35F0058AC0D /* MainModuleViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainModuleViewController+Gestures.swift"; sourceTree = "<group>"; };
+		738113632C5CF42D0058AC0D /* MainModuleViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainModuleViewController+Delegates.swift"; sourceTree = "<group>"; };
+		738113672C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsModuleViewController+Delegates.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,8 +97,8 @@
 		7373A4D32C5A2E700009E7E4 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				7373A4D02C5A13250009E7E4 /* SettingsModuleViewController.swift */,
 				7373A4D52C5A2E870009E7E4 /* SettingsModuleViewModel.swift */,
+				738113652C5CF4F90058AC0D /* SettingsModuleViewController */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -108,8 +114,8 @@
 		7373A4D72C5A2E8E0009E7E4 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				7373A4CE2C5A131B0009E7E4 /* MainModuleViewController.swift */,
 				7373A4DD2C5A76D30009E7E4 /* MainModuleViewModel.swift */,
+				738113622C5CF3650058AC0D /* ViewController */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -128,6 +134,25 @@
 				7373A4DB2C5A3FE10009E7E4 /* SettingItemDetailsModuleViewController.swift */,
 			);
 			path = SettingItemDetails;
+			sourceTree = "<group>";
+		};
+		738113622C5CF3650058AC0D /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7373A4CE2C5A131B0009E7E4 /* MainModuleViewController.swift */,
+				738113632C5CF42D0058AC0D /* MainModuleViewController+Delegates.swift */,
+				738113602C5CF35F0058AC0D /* MainModuleViewController+Gestures.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		738113652C5CF4F90058AC0D /* SettingsModuleViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7373A4D02C5A13250009E7E4 /* SettingsModuleViewController.swift */,
+				738113672C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift */,
+			);
+			path = SettingsModuleViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,7 +232,10 @@
 				7373A4BD2C5A0DBD0009E7E4 /* SceneDelegate.swift in Sources */,
 				7373A4D12C5A13250009E7E4 /* SettingsModuleViewController.swift in Sources */,
 				7373A4CF2C5A131B0009E7E4 /* MainModuleViewController.swift in Sources */,
+				738113612C5CF35F0058AC0D /* MainModuleViewController+Gestures.swift in Sources */,
 				7373A4DE2C5A76D30009E7E4 /* MainModuleViewModel.swift in Sources */,
+				738113642C5CF42D0058AC0D /* MainModuleViewController+Delegates.swift in Sources */,
+				738113682C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift in Sources */,
 				7373A4D62C5A2E870009E7E4 /* SettingsModuleViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

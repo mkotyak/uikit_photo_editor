@@ -1,16 +1,21 @@
 import Combine
 import UIKit
 
-class MainModuleViewController: UIViewController, UINavigationControllerDelegate {
-    private let viewModel: MainModuleViewModel = .init()
-    private var cancellables: Set<AnyCancellable> = .init()
+class MainModuleViewController: UIViewController {
+    let viewModel: MainModuleViewModel = .init()
+    var cancellables: Set<AnyCancellable> = .init()
 
-    private let imageView: UIImageView = .init()
+    let imageView: UIImageView = .init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
 
+        subscribeOnSelectedImageUpdate()
+        updateUI()
+    }
+
+    private func subscribeOnSelectedImageUpdate() {
         viewModel.selectedImage.sink { [weak self] newImage in
             guard let self else {
                 return
@@ -20,8 +25,6 @@ class MainModuleViewController: UIViewController, UINavigationControllerDelegate
             updateUI()
         }
         .store(in: &cancellables)
-
-        updateUI()
     }
 
     private func updateUI() {
@@ -134,30 +137,12 @@ class MainModuleViewController: UIViewController, UINavigationControllerDelegate
             imageView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
 
-        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch))
-        imageView.addGestureRecognizer(pinchGesture)
-    }
+        imageView.addGestureRecognizer(
+            UIPinchGestureRecognizer(target: self, action: #selector(handlePinch))
+        )
 
-    @objc private func handlePinch(_ gesture: UIPinchGestureRecognizer) {
-        guard let view = gesture.view else {
-            return
-        }
-
-        view.transform = view.transform.scaledBy(x: gesture.scale, y: gesture.scale)
-        gesture.scale = 1
-    }
-}
-
-extension MainModuleViewController: UIImagePickerControllerDelegate {
-    func imagePickerController(
-        _ picker: UIImagePickerController,
-        didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
-    ) {
-        guard let selectedImage = info[.originalImage] as? UIImage else {
-            return
-        }
-
-        viewModel.viewDidSelectImage(selectedImage)
-        dismiss(animated: true)
+        imageView.addGestureRecognizer(
+            UIRotationGestureRecognizer(target: self, action: #selector(handleRotation))
+        )
     }
 }

@@ -2,25 +2,23 @@ import Combine
 import UIKit
 
 class SettingsModuleViewController: UIViewController {
-    private enum Constants {
+    enum Constants {
         static var cellIdentifier: String { "cell" }
     }
 
-    private let viewModel: SettingsModuleViewModel = .init()
-    private var cancellables: Set<AnyCancellable> = .init()
+    let viewModel: SettingsModuleViewModel = .init()
+    var cancellables: Set<AnyCancellable> = .init()
 
-    private let tableView: UITableView = .init()
+    let tableView: UITableView = .init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
 
-        configureHeaderView()
-        configureTableView()
+        subscribeOnsettingsItemsUpdate()
 
-        viewModel.settingsItems.sink { [weak self] _ in
-            self?.tableView.reloadData()
-        }.store(in: &cancellables)
+        setupHeaderView()
+        setupTableView()
     }
 
     override func viewDidLayoutSubviews() {
@@ -28,7 +26,14 @@ class SettingsModuleViewController: UIViewController {
         tableView.frame = view.bounds
     }
 
-    private func configureHeaderView() {
+    private func subscribeOnsettingsItemsUpdate() {
+        viewModel.settingsItems.sink { [weak self] _ in
+            self?.tableView.reloadData()
+        }
+        .store(in: &cancellables)
+    }
+
+    private func setupHeaderView() {
         title = "Settings"
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(
@@ -67,7 +72,7 @@ class SettingsModuleViewController: UIViewController {
         present(alertController, animated: true)
     }
 
-    private func configureTableView() {
+    private func setupTableView() {
         view.addSubview(tableView)
 
         tableView.register(
@@ -77,41 +82,5 @@ class SettingsModuleViewController: UIViewController {
 
         tableView.delegate = self
         tableView.dataSource = self
-    }
-}
-
-// MARK: - UITableViewDelegate
-
-extension SettingsModuleViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        present(
-            SettingItemDetailsModuleViewController(description: viewModel.settingsItems.value[indexPath.row].description),
-            animated: true
-        )
-    }
-}
-
-// MARK: - UITableViewDataSource
-
-extension SettingsModuleViewController: UITableViewDataSource {
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int
-    ) -> Int {
-        viewModel.settingsItems.value.count
-    }
-
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath
-    ) -> UITableViewCell {
-        let cell: UITableViewCell = tableView.dequeueReusableCell(
-            withIdentifier: Constants.cellIdentifier,
-            for: indexPath
-        )
-        cell.textLabel?.text = viewModel.settingsItems.value[indexPath.row].title
-
-        return cell
     }
 }
