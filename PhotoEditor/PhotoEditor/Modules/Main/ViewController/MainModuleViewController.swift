@@ -6,6 +6,7 @@ class MainModuleViewController: UIViewController {
     var cancellables: Set<AnyCancellable> = .init()
 
     var imageView: UIImageView = .init()
+    var imageOverlayView: UIView = .init()
     var plusButton: UIButton = .init()
 
     override func viewDidLoad() {
@@ -116,16 +117,19 @@ class MainModuleViewController: UIViewController {
 
         view.addSubview(imageView)
 
-        let safeArea = view.safeAreaLayoutGuide
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageView.centerXAnchor.constraint(equalTo: safeArea.centerXAnchor),
-            imageView.centerYAnchor.constraint(equalTo: safeArea.centerYAnchor),
-            imageView.leadingAnchor.constraint(equalTo: safeArea.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: safeArea.trailingAnchor),
-            imageView.topAnchor.constraint(equalTo: safeArea.topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
+            imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            imageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
 
+        addGestureRecognizers(to: imageView)
+        setupImageOverlayView()
+    }
+
+    private func addGestureRecognizers(to: UIView) {
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch))
         let rotationGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation))
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
@@ -137,5 +141,80 @@ class MainModuleViewController: UIViewController {
         imageView.addGestureRecognizer(pinchGesture)
         imageView.addGestureRecognizer(rotationGesture)
         imageView.addGestureRecognizer(panGesture)
+    }
+
+    private func setupImageOverlayView() {
+        imageOverlayView = UIView()
+        imageOverlayView.backgroundColor = .clear
+        imageOverlayView.isUserInteractionEnabled = false
+        view.addSubview(imageOverlayView)
+
+        imageOverlayView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            imageOverlayView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            imageOverlayView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            imageOverlayView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            imageOverlayView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+        ])
+
+        let overlayColor = UIColor.black.withAlphaComponent(0.5)
+
+        let topOverlay = UIView()
+        topOverlay.backgroundColor = overlayColor
+        imageOverlayView.addSubview(topOverlay)
+
+        let bottomOverlay = UIView()
+        bottomOverlay.backgroundColor = overlayColor
+        imageOverlayView.addSubview(bottomOverlay)
+
+        let leftOverlay = UIView()
+        leftOverlay.backgroundColor = overlayColor
+        imageOverlayView.addSubview(leftOverlay)
+
+        let rightOverlay = UIView()
+        rightOverlay.backgroundColor = overlayColor
+        imageOverlayView.addSubview(rightOverlay)
+
+        let transparentRectangle = UIView()
+        transparentRectangle.backgroundColor = .clear
+        transparentRectangle.layer.borderColor = UIColor.yellow.cgColor
+        transparentRectangle.layer.borderWidth = 2
+        imageOverlayView.addSubview(transparentRectangle)
+
+        let rectangleWidth: CGFloat = 250
+        let rectangleHeight: CGFloat = 350
+
+        topOverlay.translatesAutoresizingMaskIntoConstraints = false
+        bottomOverlay.translatesAutoresizingMaskIntoConstraints = false
+        leftOverlay.translatesAutoresizingMaskIntoConstraints = false
+        rightOverlay.translatesAutoresizingMaskIntoConstraints = false
+        transparentRectangle.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            transparentRectangle.centerXAnchor.constraint(equalTo: imageOverlayView.centerXAnchor),
+            transparentRectangle.centerYAnchor.constraint(equalTo: imageOverlayView.centerYAnchor),
+            transparentRectangle.widthAnchor.constraint(equalToConstant: rectangleWidth),
+            transparentRectangle.heightAnchor.constraint(equalToConstant: rectangleHeight),
+
+            topOverlay.leadingAnchor.constraint(equalTo: imageOverlayView.leadingAnchor),
+            topOverlay.trailingAnchor.constraint(equalTo: imageOverlayView.trailingAnchor),
+            topOverlay.topAnchor.constraint(equalTo: imageOverlayView.topAnchor),
+            topOverlay.bottomAnchor.constraint(equalTo: transparentRectangle.topAnchor),
+
+            bottomOverlay.leadingAnchor.constraint(equalTo: imageOverlayView.leadingAnchor),
+            bottomOverlay.trailingAnchor.constraint(equalTo: imageOverlayView.trailingAnchor),
+            bottomOverlay.topAnchor.constraint(equalTo: transparentRectangle.bottomAnchor),
+            bottomOverlay.bottomAnchor.constraint(equalTo: imageOverlayView.bottomAnchor),
+
+            leftOverlay.leadingAnchor.constraint(equalTo: imageOverlayView.leadingAnchor),
+            leftOverlay.trailingAnchor.constraint(equalTo: transparentRectangle.leadingAnchor),
+            leftOverlay.topAnchor.constraint(equalTo: transparentRectangle.topAnchor),
+            leftOverlay.bottomAnchor.constraint(equalTo: transparentRectangle.bottomAnchor),
+
+            rightOverlay.leadingAnchor.constraint(equalTo: transparentRectangle.trailingAnchor),
+            rightOverlay.trailingAnchor.constraint(equalTo: imageOverlayView.trailingAnchor),
+            rightOverlay.topAnchor.constraint(equalTo: transparentRectangle.topAnchor),
+            rightOverlay.bottomAnchor.constraint(equalTo: transparentRectangle.bottomAnchor)
+        ])
     }
 }
