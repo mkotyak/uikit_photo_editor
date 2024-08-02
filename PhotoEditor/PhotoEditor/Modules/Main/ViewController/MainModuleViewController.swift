@@ -113,7 +113,6 @@ class MainModuleViewController: UIViewController {
     private func setupImageView() {
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
-        imageView.translatesAutoresizingMaskIntoConstraints = false
 
         view.addSubview(imageView)
 
@@ -151,13 +150,19 @@ class MainModuleViewController: UIViewController {
 
         imageOverlayView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageOverlayView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
-            imageOverlayView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+            imageOverlayView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            imageOverlayView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             imageOverlayView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             imageOverlayView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
 
-        let overlayColor = UIColor.black.withAlphaComponent(0.5)
+        let overlayColor: UIColor = .white.withAlphaComponent(0.7)
+
+        let transparentRectangle = UIView()
+        transparentRectangle.backgroundColor = .clear
+        transparentRectangle.layer.borderColor = UIColor.yellow.cgColor
+        transparentRectangle.layer.borderWidth = 2
+        imageOverlayView.addSubview(transparentRectangle)
 
         let topOverlay = UIView()
         topOverlay.backgroundColor = overlayColor
@@ -174,12 +179,6 @@ class MainModuleViewController: UIViewController {
         let rightOverlay = UIView()
         rightOverlay.backgroundColor = overlayColor
         imageOverlayView.addSubview(rightOverlay)
-
-        let transparentRectangle = UIView()
-        transparentRectangle.backgroundColor = .clear
-        transparentRectangle.layer.borderColor = UIColor.yellow.cgColor
-        transparentRectangle.layer.borderWidth = 2
-        imageOverlayView.addSubview(transparentRectangle)
 
         let rectangleWidth: CGFloat = 250
         let rectangleHeight: CGFloat = 350
