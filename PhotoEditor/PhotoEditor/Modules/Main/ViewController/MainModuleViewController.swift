@@ -6,6 +6,7 @@ class MainModuleViewController: UIViewController {
     var cancellables: Set<AnyCancellable> = .init()
 
     let imageView: UIImageView = .init()
+    var plusButton: UIButton = .init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,6 +31,7 @@ class MainModuleViewController: UIViewController {
     private func updateUI() {
         navigationItem.rightBarButtonItem = nil
         imageView.removeFromSuperview()
+        plusButton.removeFromSuperview()
 
         if imageView.image == nil {
             setupPlusButton()
@@ -40,44 +42,26 @@ class MainModuleViewController: UIViewController {
     }
 
     private func setupNavigationBar() {
-        navigationItem.rightBarButtonItem = saveBarButton
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(plusButtonTapped)
+        )
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: .init(named: "externaldrive"),
+            style: .plain,
+            target: self,
+            action: #selector(saveButtonTapped)
+        )
     }
 
-    private lazy var saveBarButton: UIBarButtonItem = {
-        let imageView: UIImageView = .init(image: .init(named: "externaldrive"))
-        imageView.contentMode = .scaleAspectFit
-
-        let label: UILabel = .init()
-        label.text = "Save"
-        label.font = UIFont.systemFont(ofSize: 16)
-
-        let stackView: UIStackView = .init(arrangedSubviews: [imageView, label])
-        stackView.axis = .horizontal
-        stackView.spacing = 5
-
-        let containerView: UIView = .init()
-        containerView.addSubview(stackView)
-
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.centerYAnchor.constraint(equalTo: containerView.centerYAnchor),
-            stackView.centerXAnchor.constraint(equalTo: containerView.centerXAnchor),
-            stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor),
-            stackView.topAnchor.constraint(equalTo: containerView.topAnchor)
-        ])
-
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapSaveButton))
-        containerView.addGestureRecognizer(tapGesture)
-
-        return UIBarButtonItem(customView: containerView)
-    }()
-
-    @objc private func didTapSaveButton() {
+    @objc private func saveButtonTapped() {
         viewModel.viewDidSelectSave()
     }
 
     private func setupPlusButton() {
-        let plusButton = UIButton(type: .system)
+        plusButton = UIButton(type: .system)
         plusButton.setImage(
             UIImage(systemName: "plus"),
             for: .normal
