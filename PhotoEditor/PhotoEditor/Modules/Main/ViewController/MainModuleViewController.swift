@@ -5,7 +5,7 @@ class MainModuleViewController: UIViewController {
     let viewModel: MainModuleViewModel = .init()
     var cancellables: Set<AnyCancellable> = .init()
 
-    let imageView: UIImageView = .init()
+    var imageView: UIImageView = .init()
     var plusButton: UIButton = .init()
 
     override func viewDidLoad() {
@@ -22,7 +22,10 @@ class MainModuleViewController: UIViewController {
                 return
             }
 
+            imageView.removeFromSuperview()
+            imageView = .init()
             imageView.image = newImage
+
             updateUI()
         }
         .store(in: &cancellables)
@@ -30,6 +33,8 @@ class MainModuleViewController: UIViewController {
 
     private func updateUI() {
         navigationItem.rightBarButtonItem = nil
+        navigationItem.leftBarButtonItem = nil
+
         imageView.removeFromSuperview()
         plusButton.removeFromSuperview()
 
