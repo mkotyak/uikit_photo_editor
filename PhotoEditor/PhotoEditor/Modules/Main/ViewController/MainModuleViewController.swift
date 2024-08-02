@@ -137,16 +137,16 @@ class MainModuleViewController: UIViewController {
             imageView.bottomAnchor.constraint(equalTo: safeArea.bottomAnchor)
         ])
 
-        imageView.addGestureRecognizer(
-            UIPinchGestureRecognizer(target: self, action: #selector(handlePinch))
-        )
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch))
+        let rotationGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation))
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
 
-        imageView.addGestureRecognizer(
-            UIRotationGestureRecognizer(target: self, action: #selector(handleRotation))
-        )
+        pinchGesture.delegate = self
+        rotationGesture.delegate = self
+        panGesture.delegate = self
 
-        imageView.addGestureRecognizer(
-            UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-        )
+        imageView.addGestureRecognizer(pinchGesture)
+        imageView.addGestureRecognizer(rotationGesture)
+        imageView.addGestureRecognizer(panGesture)
     }
 }

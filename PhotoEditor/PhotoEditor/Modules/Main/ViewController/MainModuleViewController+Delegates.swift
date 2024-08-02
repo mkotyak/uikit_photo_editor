@@ -1,5 +1,9 @@
 import UIKit
 
+// MARK: - UINavigationControllerDelegate
+
+extension MainModuleViewController: UINavigationControllerDelegate {}
+
 // MARK: - UIImagePickerControllerDelegate
 
 extension MainModuleViewController: UIImagePickerControllerDelegate {
@@ -16,6 +20,13 @@ extension MainModuleViewController: UIImagePickerControllerDelegate {
     }
 }
 
-// MARK: - UINavigationControllerDelegate
+// MARK: - UIGestureRecognizerDelegate
 
-extension MainModuleViewController: UINavigationControllerDelegate {}
+extension MainModuleViewController: UIGestureRecognizerDelegate {
+    func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
+    ) -> Bool {
+        return true
+    }
+}
