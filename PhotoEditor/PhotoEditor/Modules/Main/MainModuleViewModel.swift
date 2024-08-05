@@ -3,17 +3,25 @@ import Foundation
 import UIKit
 
 final class MainModuleViewModel {
-    private var originalImage: UIImage = .init()
+    private var originalImage: UIImage?
 
     var selectedImage: CurrentValueSubject<UIImage?, Never> = .init(nil)
-    let filters: [String] = ["original"] + FilterType.allCases.map { $0.rawValue }
+    let filters: [String]
+
+    init() {
+        self.filters = ["original"] + FilterType.allCases.map { $0.rawValue }
+    }
 
     private func revertToOrigin() {
         selectedImage.value = originalImage
     }
 
     private func apply(_ filter: FilterType) {
-        selectedImage.value = selectedImage.value?.addFilter(filter)
+        guard let image = selectedImage.value else {
+            return
+        }
+
+        selectedImage.value = image.addFilter(filter)
     }
 
     // MARK: - Intents
@@ -28,13 +36,11 @@ final class MainModuleViewModel {
     }
 
     func viewDidSelectFilter(at index: Int) {
-        if filters[index] == "original" {
-            revertToOrigin()
-        } else {
-            guard let filter = FilterType(rawValue: filters[index]) else {
-                return
-            }
+        let filterName = filters[index]
 
+        if filterName == "original" {
+            revertToOrigin()
+        } else if let filter = FilterType(rawValue: filterName) {
             apply(filter)
         }
     }
