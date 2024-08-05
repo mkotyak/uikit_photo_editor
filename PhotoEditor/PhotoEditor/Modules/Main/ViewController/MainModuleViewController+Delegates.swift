@@ -15,7 +15,8 @@ extension MainModuleViewController: UIImagePickerControllerDelegate {
             return
         }
 
-        resetImageView() // reset is required to reset applie
+        resetImageView() // this is required to reset previously applied gesture changes
+        resetSegmentedControl()
         setupImageView()
         viewModel.viewDidSelectImage(selectedImage)
 
@@ -25,6 +26,10 @@ extension MainModuleViewController: UIImagePickerControllerDelegate {
     private func resetImageView() {
         imageView.removeFromSuperview()
         imageView = .init()
+    }
+
+    private func resetSegmentedControl() {
+        segmentedControl.selectedSegmentIndex = 0
     }
 }
 
