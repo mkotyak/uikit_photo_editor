@@ -8,6 +8,7 @@ class MainModuleViewController: UIViewController {
     var imageView: UIImageView = .init()
     var imageOverlayView: UIView = .init()
     var plusButton: UIButton = .init()
+    var segmentedControl: UISegmentedControl?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +44,7 @@ class MainModuleViewController: UIViewController {
             setupPlusButton()
         } else {
             setupNavigationBar()
+            setupSegmentedControl()
             setupImageView()
         }
     }
@@ -64,6 +66,35 @@ class MainModuleViewController: UIViewController {
 
     @objc private func saveButtonTapped() {
         viewModel.viewDidSelectSave()
+    }
+
+    private func setupSegmentedControl() {
+        guard self.segmentedControl == nil else {
+            return
+        }
+
+        let segmentedControl: UISegmentedControl = .init(items: viewModel.filters)
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(
+            self,
+            action: #selector(segmentedControlChanged(_:)),
+            for: .valueChanged
+        )
+
+        view.addSubview(segmentedControl)
+
+        segmentedControl.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            segmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            segmentedControl.heightAnchor.constraint(equalToConstant: 30)
+        ])
+
+        self.segmentedControl = segmentedControl
+    }
+
+    @objc private func segmentedControlChanged(_ sender: UISegmentedControl) {
+        viewModel.viewDidSelectFilter(at: sender.selectedSegmentIndex)
     }
 
     private func setupPlusButton() {
@@ -123,7 +154,7 @@ class MainModuleViewController: UIViewController {
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            imageView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            imageView.topAnchor.constraint(equalTo: segmentedControl?.safeAreaLayoutGuide.bottomAnchor ?? view.safeAreaLayoutGuide.topAnchor),
             imageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
 
@@ -155,7 +186,7 @@ class MainModuleViewController: UIViewController {
         NSLayoutConstraint.activate([
             imageOverlayView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             imageOverlayView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            imageOverlayView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            imageOverlayView.topAnchor.constraint(equalTo: segmentedControl?.bottomAnchor ?? view.safeAreaLayoutGuide.topAnchor),
             imageOverlayView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
 

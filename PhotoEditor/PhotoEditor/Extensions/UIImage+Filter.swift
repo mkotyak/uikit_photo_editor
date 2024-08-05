@@ -6,7 +6,7 @@ extension UIImage {
             return self
         }
             
-        guard let filter = CIFilter(name: filterType.rawValue) else {
+        guard let filter = CIFilter(name: filterType.name) else {
             return self
         }
             
