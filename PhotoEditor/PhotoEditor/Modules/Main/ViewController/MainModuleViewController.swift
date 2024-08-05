@@ -15,7 +15,9 @@ class MainModuleViewController: UIViewController {
         view.backgroundColor = .white
 
         subscribeOnSelectedImageUpdate()
-        updateUI()
+
+        setupUI()
+        refreshUI()
     }
 
     private func subscribeOnSelectedImageUpdate() {
@@ -24,28 +26,32 @@ class MainModuleViewController: UIViewController {
                 return
             }
 
-            imageView.removeFromSuperview()
-            imageView = .init()
             imageView.image = newImage
-
-            updateUI()
+            refreshUI()
         }
         .store(in: &cancellables)
     }
 
-    private func updateUI() {
-        navigationItem.rightBarButtonItem = nil
-        navigationItem.leftBarButtonItem = nil
+    private func setupUI() {
+        setupPlusButton()
+        setupNavigationBar()
+        setupSegmentedControl()
+    }
 
-        imageView.removeFromSuperview()
-        plusButton.removeFromSuperview()
-
+    private func refreshUI() {
         if imageView.image == nil {
-            setupPlusButton()
+            navigationItem.rightBarButtonItem = nil
+            navigationItem.leftBarButtonItem = nil
+            plusButton.isHidden = false
+            segmentedControl?.isHidden = true
+            imageView.isHidden = true
+            imageOverlayView.isHidden = true
         } else {
             setupNavigationBar()
-            setupSegmentedControl()
-            setupImageView()
+            plusButton.isHidden = true
+            segmentedControl?.isHidden = false
+            imageView.isHidden = false
+            imageOverlayView.isHidden = false
         }
     }
 
@@ -144,7 +150,7 @@ class MainModuleViewController: UIViewController {
         )
     }
 
-    private func setupImageView() {
+    func setupImageView() {
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
 

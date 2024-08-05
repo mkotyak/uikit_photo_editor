@@ -15,6 +15,10 @@ extension MainModuleViewController: UIImagePickerControllerDelegate {
             return
         }
 
+        imageView.removeFromSuperview()
+        imageView = .init()
+        setupImageView()
+
         viewModel.viewDidSelectImage(selectedImage)
         dismiss(animated: true)
     }
