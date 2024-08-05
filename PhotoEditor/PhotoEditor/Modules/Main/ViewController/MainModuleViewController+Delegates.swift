@@ -15,12 +15,16 @@ extension MainModuleViewController: UIImagePickerControllerDelegate {
             return
         }
 
+        resetImageView() // reset is required to reset applie
+        setupImageView()
+        viewModel.viewDidSelectImage(selectedImage)
+
+        dismiss(animated: true)
+    }
+
+    private func resetImageView() {
         imageView.removeFromSuperview()
         imageView = .init()
-        setupImageView()
-
-        viewModel.viewDidSelectImage(selectedImage)
-        dismiss(animated: true)
     }
 }
 

@@ -1,9 +1,8 @@
 import Combine
-import Foundation
 import UIKit
 
 final class MainModuleViewModel {
-    private var originalImage: UIImage?
+    private var originalSelectedImage: UIImage?
 
     var selectedImage: CurrentValueSubject<UIImage?, Never> = .init(nil)
     let filters: [String]
@@ -13,7 +12,7 @@ final class MainModuleViewModel {
     }
 
     private func revertToOrigin() {
-        selectedImage.value = originalImage
+        selectedImage.value = originalSelectedImage
     }
 
     private func apply(_ filter: FilterType) {
@@ -28,7 +27,7 @@ final class MainModuleViewModel {
 
     func viewDidSelectImage(_ newImage: UIImage) {
         selectedImage.value = newImage
-        originalImage = newImage
+        originalSelectedImage = newImage
     }
 
     func viewDidSelectSave() {

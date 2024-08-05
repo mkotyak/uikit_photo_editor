@@ -7,67 +7,56 @@ class MainModuleViewController: UIViewController {
 
     var imageView: UIImageView = .init()
     var imageOverlayView: UIView = .init()
-    var plusButton: UIButton = .init()
-    var segmentedControl: UISegmentedControl?
+    var plusButton: UIButton = .init(type: .system)
+    var segmentedControl: UISegmentedControl = .init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
 
-        subscribeOnSelectedImageUpdate()
-
         setupUI()
-        refreshUI()
+        setupBinding()
     }
 
-    private func subscribeOnSelectedImageUpdate() {
-        viewModel.selectedImage.sink { [weak self] newImage in
-            guard let self else {
-                return
-            }
+    private func setupBinding() {
+        viewModel.selectedImage
+            .sink { [weak self] newImage in
+                guard let self else {
+                    return
+                }
 
-            imageView.image = newImage
-            refreshUI()
-        }
-        .store(in: &cancellables)
+                imageView.image = newImage
+                refreshUI()
+            }
+            .store(in: &cancellables)
     }
 
     private func setupUI() {
         setupPlusButton()
-        setupNavigationBar()
         setupSegmentedControl()
+        refreshUI()
     }
 
     private func refreshUI() {
-        if imageView.image == nil {
-            navigationItem.rightBarButtonItem = nil
-            navigationItem.leftBarButtonItem = nil
-            plusButton.isHidden = false
-            segmentedControl?.isHidden = true
-            imageView.isHidden = true
-            imageOverlayView.isHidden = true
-        } else {
-            setupNavigationBar()
-            plusButton.isHidden = true
-            segmentedControl?.isHidden = false
-            imageView.isHidden = false
-            imageOverlayView.isHidden = false
-        }
-    }
+        let hasImage = imageView.image != nil
 
-    private func setupNavigationBar() {
-        navigationItem.leftBarButtonItem = UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(plusButtonTapped)
-        )
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: .init(named: "externaldrive"),
+        navigationItem.rightBarButtonItem = hasImage ? UIBarButtonItem(
+            image: UIImage(named: "externaldrive"),
             style: .plain,
             target: self,
             action: #selector(saveButtonTapped)
-        )
+        ) : nil
+
+        navigationItem.leftBarButtonItem = hasImage ? UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(plusButtonTapped)
+        ) : nil
+
+        plusButton.isHidden = hasImage
+        segmentedControl.isHidden = !hasImage
+        imageView.isHidden = !hasImage
+        imageOverlayView.isHidden = !hasImage
     }
 
     @objc private func saveButtonTapped() {
@@ -75,10 +64,6 @@ class MainModuleViewController: UIViewController {
     }
 
     private func setupSegmentedControl() {
-        guard self.segmentedControl == nil else {
-            return
-        }
-
         let segmentedControl: UISegmentedControl = .init(items: viewModel.filters)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(
@@ -160,7 +145,7 @@ class MainModuleViewController: UIViewController {
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            imageView.topAnchor.constraint(equalTo: segmentedControl?.safeAreaLayoutGuide.bottomAnchor ?? view.safeAreaLayoutGuide.topAnchor),
+            imageView.topAnchor.constraint(equalTo: segmentedControl.safeAreaLayoutGuide.bottomAnchor),
             imageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
 
@@ -192,7 +177,7 @@ class MainModuleViewController: UIViewController {
         NSLayoutConstraint.activate([
             imageOverlayView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             imageOverlayView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            imageOverlayView.topAnchor.constraint(equalTo: segmentedControl?.bottomAnchor ?? view.safeAreaLayoutGuide.topAnchor),
+            imageOverlayView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
             imageOverlayView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
 
