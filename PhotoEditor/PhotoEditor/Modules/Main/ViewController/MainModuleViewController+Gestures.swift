@@ -6,7 +6,11 @@ extension MainModuleViewController {
             return
         }
 
-        view.transform = view.transform.scaledBy(x: gesture.scale, y: gesture.scale)
+        view.transform = view.transform.scaledBy(
+            x: gesture.scale,
+            y: gesture.scale
+        )
+
         gesture.scale = 1
     }
 
@@ -15,10 +19,8 @@ extension MainModuleViewController {
             return
         }
 
-        if gesture.state == .began || gesture.state == .changed {
-            view.transform = view.transform.rotated(by: gesture.rotation)
-            gesture.rotation = 0
-        }
+        view.transform = view.transform.rotated(by: gesture.rotation)
+        gesture.rotation = 0.0
     }
 
     @objc func handlePan(_ gesture: UIPanGestureRecognizer) {
@@ -27,7 +29,12 @@ extension MainModuleViewController {
         }
 
         let translation = gesture.translation(in: view.superview)
-        view.center = CGPoint(x: view.center.x + translation.x, y: view.center.y + translation.y)
+
+        view.center = CGPoint(
+            x: view.center.x + translation.x,
+            y: view.center.y + translation.y
+        )
+
         gesture.setTranslation(.zero, in: view.superview)
     }
 }

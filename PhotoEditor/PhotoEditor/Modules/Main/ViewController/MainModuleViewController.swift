@@ -107,7 +107,10 @@ class MainModuleViewController: UIViewController {
         imagePickerController.delegate = self
         imagePickerController.sourceType = .photoLibrary
 
-        present(imagePickerController, animated: true)
+        present(
+            imagePickerController,
+            animated: true
+        )
     }
 
     private func setupImageView() {
@@ -128,7 +131,7 @@ class MainModuleViewController: UIViewController {
         setupImageOverlayView()
     }
 
-    private func addGestureRecognizers(to: UIView) {
+    private func addGestureRecognizers(to view: UIView) {
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch))
         let rotationGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation))
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
@@ -137,9 +140,9 @@ class MainModuleViewController: UIViewController {
         rotationGesture.delegate = self
         panGesture.delegate = self
 
-        imageView.addGestureRecognizer(pinchGesture)
-        imageView.addGestureRecognizer(rotationGesture)
-        imageView.addGestureRecognizer(panGesture)
+        view.addGestureRecognizer(pinchGesture)
+        view.addGestureRecognizer(rotationGesture)
+        view.addGestureRecognizer(panGesture)
     }
 
     private func setupImageOverlayView() {
