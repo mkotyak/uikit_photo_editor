@@ -74,7 +74,8 @@ class MainModuleViewController: UIViewController {
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            segmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            segmentedControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            segmentedControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
             segmentedControl.heightAnchor.constraint(equalToConstant: 30)
         ])
     }
