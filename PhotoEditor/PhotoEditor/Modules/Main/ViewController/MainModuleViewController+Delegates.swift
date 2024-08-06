@@ -24,8 +24,8 @@ extension MainModuleViewController: UIImagePickerControllerDelegate {
     }
 
     private func resetImageView() {
-        imageView.removeFromSuperview()
-        imageView = .init()
+        imageView?.removeFromSuperview()
+        imageView = nil
     }
 
     private func resetSegmentedControl() {

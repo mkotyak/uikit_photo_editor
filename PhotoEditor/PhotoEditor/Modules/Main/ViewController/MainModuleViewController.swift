@@ -6,9 +6,9 @@ class MainModuleViewController: UIViewController {
     var cancellables: Set<AnyCancellable> = .init()
 
     var segmentedControl: UISegmentedControl = .init()
-    var plusButton: UIButton = .init(type: .system)
-    var imageView: UIImageView = .init()
-    var imageOverlayView: UIView = .init()
+    var plusButton: UIButton = .init()
+    var imageView: UIImageView?
+    var imageOverlayView: UIView?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ class MainModuleViewController: UIViewController {
     }
 
     private func refreshUI() {
-        let hasImage = imageView.image != nil
+        let hasImage = imageView?.image != nil
 
         navigationItem.rightBarButtonItem = hasImage ? UIBarButtonItem(
             image: UIImage(named: "externaldrive"),
@@ -43,8 +43,8 @@ class MainModuleViewController: UIViewController {
 
         plusButton.isHidden = hasImage
         segmentedControl.isHidden = !hasImage
-        imageView.isHidden = !hasImage
-        imageOverlayView.isHidden = !hasImage
+        imageView?.isHidden = !hasImage
+        imageOverlayView?.isHidden = !hasImage
     }
 
     private func setupBinding() {
@@ -54,7 +54,7 @@ class MainModuleViewController: UIViewController {
                     return
                 }
 
-                imageView.image = newImage
+                imageView?.image = newImage
                 refreshUI()
             }
             .store(in: &cancellables)
@@ -116,6 +116,11 @@ class MainModuleViewController: UIViewController {
     }
 
     func setupImageView() {
+        guard imageView == nil else {
+            return
+        }
+
+        let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
 
@@ -129,12 +134,19 @@ class MainModuleViewController: UIViewController {
             imageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
 
+        self.imageView = imageView
+
         addGestureRecognizers(to: imageView)
         setupImageOverlayView()
+        setupHeadlineBackroundView()
     }
 
     private func setupImageOverlayView() {
-        imageOverlayView = UIView()
+        guard imageOverlayView == nil else {
+            return
+        }
+
+        let imageOverlayView = UIView()
         imageOverlayView.backgroundColor = .clear
         imageOverlayView.isUserInteractionEnabled = false
         view.addSubview(imageOverlayView)
@@ -207,7 +219,7 @@ class MainModuleViewController: UIViewController {
             rightOverlay.bottomAnchor.constraint(equalTo: transparentRectangle.bottomAnchor)
         ])
 
-        setupHeadlineBackroundView()
+        self.imageOverlayView = imageOverlayView
     }
 
     private func setupHeadlineBackroundView() {
@@ -220,7 +232,7 @@ class MainModuleViewController: UIViewController {
             headlineBackroundView.topAnchor.constraint(equalTo: view.topAnchor),
             headlineBackroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             headlineBackroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            headlineBackroundView.bottomAnchor.constraint(equalTo: imageView.topAnchor)
+            headlineBackroundView.bottomAnchor.constraint(equalTo: imageView?.topAnchor ?? segmentedControl.bottomAnchor)
         ])
     }
 
