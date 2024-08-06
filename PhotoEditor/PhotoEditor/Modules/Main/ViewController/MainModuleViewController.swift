@@ -5,10 +5,11 @@ class MainModuleViewController: UIViewController {
     let viewModel: MainModuleViewModel = .init()
     var cancellables: Set<AnyCancellable> = .init()
 
+    var navigationBar: CustomNavigationBar = .init()
+    var segmentedControl: UISegmentedControl = .init()
+    var plusButton: UIButton = .init(type: .system)
     var imageView: UIImageView = .init()
     var imageOverlayView: UIView = .init()
-    var plusButton: UIButton = .init(type: .system)
-    var segmentedControl: UISegmentedControl = .init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,28 +33,18 @@ class MainModuleViewController: UIViewController {
     }
 
     private func setupUI() {
-        setupPlusButton()
+        setupNavigationBar()
         setupSegmentedControl()
+        setupPlusButton()
+
         refreshUI()
     }
 
     private func refreshUI() {
         let hasImage = imageView.image != nil
 
-        navigationItem.rightBarButtonItem = hasImage ? UIBarButtonItem(
-            image: UIImage(named: "externaldrive"),
-            style: .plain,
-            target: self,
-            action: #selector(saveButtonTapped)
-        ) : nil
-
-        navigationItem.leftBarButtonItem = hasImage ? UIBarButtonItem(
-            barButtonSystemItem: .add,
-            target: self,
-            action: #selector(plusButtonTapped)
-        ) : nil
-
         plusButton.isHidden = hasImage
+        navigationBar.isHidden = !hasImage
         segmentedControl.isHidden = !hasImage
         imageView.isHidden = !hasImage
         imageOverlayView.isHidden = !hasImage
@@ -86,6 +77,33 @@ class MainModuleViewController: UIViewController {
 
     @objc private func segmentedControlChanged(_ sender: UISegmentedControl) {
         viewModel.viewDidSelectFilter(at: sender.selectedSegmentIndex)
+    }
+
+    private func setupNavigationBar() {
+        let leftButton = UIButton(type: .system)
+        leftButton.setImage(UIImage(systemName: "plus"), for: .normal)
+        leftButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
+
+        let rightButton = UIButton(type: .system)
+        rightButton.setImage(UIImage(named: "externaldrive"), for: .normal)
+        rightButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
+
+        navigationBar = CustomNavigationBar(
+            title: "",
+            leftButton: leftButton,
+            rightButton: rightButton
+        )
+
+        view.addSubview(navigationBar)
+
+        navigationBar.translatesAutoresizingMaskIntoConstraints = false
+
+        NSLayoutConstraint.activate([
+            navigationBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 54),
+            navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            navigationBar.heightAnchor.constraint(equalToConstant: navigationController?.navigationBar.frame.height ?? 44)
+        ])
     }
 
     private func setupPlusButton() {
@@ -139,7 +157,7 @@ class MainModuleViewController: UIViewController {
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
 
-        view.addSubview(imageView)
+        view.insertSubview(imageView, at: 0)
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([

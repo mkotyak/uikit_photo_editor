@@ -23,6 +23,7 @@
 		738113682C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113672C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift */; };
 		7381136B2C60EE3F0058AC0D /* UIImage+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381136A2C60EE3F0058AC0D /* UIImage+Filter.swift */; };
 		7381136D2C60EED30058AC0D /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381136C2C60EED30058AC0D /* FilterType.swift */; };
+		738113732C6230800058AC0D /* CutomNavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113722C6230800058AC0D /* CutomNavigationBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		738113672C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsModuleViewController+Delegates.swift"; sourceTree = "<group>"; };
 		7381136A2C60EE3F0058AC0D /* UIImage+Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Filter.swift"; sourceTree = "<group>"; };
 		7381136C2C60EED30058AC0D /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
+		738113722C6230800058AC0D /* CutomNavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CutomNavigationBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 		7373A4B92C5A0DBD0009E7E4 /* PhotoEditor */ = {
 			isa = PBXGroup;
 			children = (
+				738113712C6230760058AC0D /* Views */,
 				738113692C60EE1E0058AC0D /* Extensions */,
 				7373A4D42C5A2E780009E7E4 /* Models */,
 				7373A4D22C5A2E680009E7E4 /* Modules */,
@@ -169,6 +172,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		738113712C6230760058AC0D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				738113722C6230800058AC0D /* CutomNavigationBar.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -250,6 +261,7 @@
 				738113612C5CF35F0058AC0D /* MainModuleViewController+Gestures.swift in Sources */,
 				7373A4DE2C5A76D30009E7E4 /* MainModuleViewModel.swift in Sources */,
 				738113642C5CF42D0058AC0D /* MainModuleViewController+Delegates.swift in Sources */,
+				738113732C6230800058AC0D /* CutomNavigationBar.swift in Sources */,
 				7381136B2C60EE3F0058AC0D /* UIImage+Filter.swift in Sources */,
 				738113682C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift in Sources */,
 				7373A4D62C5A2E870009E7E4 /* SettingsModuleViewModel.swift in Sources */,
