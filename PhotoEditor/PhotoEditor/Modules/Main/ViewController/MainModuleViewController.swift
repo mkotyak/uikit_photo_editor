@@ -5,7 +5,6 @@ class MainModuleViewController: UIViewController {
     let viewModel: MainModuleViewModel = .init()
     var cancellables: Set<AnyCancellable> = .init()
 
-    var navigationBar: CustomNavigationBar = .init()
     var segmentedControl: UISegmentedControl = .init()
     var plusButton: UIButton = .init(type: .system)
     var imageView: UIImageView = .init()
@@ -17,6 +16,35 @@ class MainModuleViewController: UIViewController {
 
         setupUI()
         setupBinding()
+    }
+
+    private func setupUI() {
+        setupSegmentedControl()
+        setupPlusButton()
+
+        refreshUI()
+    }
+
+    private func refreshUI() {
+        let hasImage = imageView.image != nil
+
+        navigationItem.rightBarButtonItem = hasImage ? UIBarButtonItem(
+            image: UIImage(named: "externaldrive"),
+            style: .plain,
+            target: self,
+            action: #selector(saveButtonTapped)
+        ) : nil
+
+        navigationItem.leftBarButtonItem = hasImage ? UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(plusButtonTapped)
+        ) : nil
+
+        plusButton.isHidden = hasImage
+        segmentedControl.isHidden = !hasImage
+        imageView.isHidden = !hasImage
+        imageOverlayView.isHidden = !hasImage
     }
 
     private func setupBinding() {
@@ -32,30 +60,8 @@ class MainModuleViewController: UIViewController {
             .store(in: &cancellables)
     }
 
-    private func setupUI() {
-        setupNavigationBar()
-        setupSegmentedControl()
-        setupPlusButton()
-
-        refreshUI()
-    }
-
-    private func refreshUI() {
-        let hasImage = imageView.image != nil
-
-        plusButton.isHidden = hasImage
-        navigationBar.isHidden = !hasImage
-        segmentedControl.isHidden = !hasImage
-        imageView.isHidden = !hasImage
-        imageOverlayView.isHidden = !hasImage
-    }
-
-    @objc private func saveButtonTapped() {
-        viewModel.viewDidSelectSave()
-    }
-
     private func setupSegmentedControl() {
-        let segmentedControl: UISegmentedControl = .init(items: viewModel.filters)
+        segmentedControl = .init(items: viewModel.filters)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(
             self,
@@ -70,39 +76,6 @@ class MainModuleViewController: UIViewController {
             segmentedControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             segmentedControl.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             segmentedControl.heightAnchor.constraint(equalToConstant: 30)
-        ])
-
-        self.segmentedControl = segmentedControl
-    }
-
-    @objc private func segmentedControlChanged(_ sender: UISegmentedControl) {
-        viewModel.viewDidSelectFilter(at: sender.selectedSegmentIndex)
-    }
-
-    private func setupNavigationBar() {
-        let leftButton = UIButton(type: .system)
-        leftButton.setImage(UIImage(systemName: "plus"), for: .normal)
-        leftButton.addTarget(self, action: #selector(plusButtonTapped), for: .touchUpInside)
-
-        let rightButton = UIButton(type: .system)
-        rightButton.setImage(UIImage(named: "externaldrive"), for: .normal)
-        rightButton.addTarget(self, action: #selector(saveButtonTapped), for: .touchUpInside)
-
-        navigationBar = CustomNavigationBar(
-            title: "",
-            leftButton: leftButton,
-            rightButton: rightButton
-        )
-
-        view.addSubview(navigationBar)
-
-        navigationBar.translatesAutoresizingMaskIntoConstraints = false
-
-        NSLayoutConstraint.activate([
-            navigationBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 54),
-            navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-            navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            navigationBar.heightAnchor.constraint(equalToConstant: navigationController?.navigationBar.frame.height ?? 44)
         ])
     }
 
@@ -142,17 +115,6 @@ class MainModuleViewController: UIViewController {
         )
     }
 
-    @objc private func plusButtonTapped() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.sourceType = .photoLibrary
-
-        present(
-            imagePickerController,
-            animated: true
-        )
-    }
-
     func setupImageView() {
         imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
@@ -169,20 +131,6 @@ class MainModuleViewController: UIViewController {
 
         addGestureRecognizers(to: imageView)
         setupImageOverlayView()
-    }
-
-    private func addGestureRecognizers(to view: UIView) {
-        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch))
-        let rotationGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation))
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-
-        pinchGesture.delegate = self
-        rotationGesture.delegate = self
-        panGesture.delegate = self
-
-        view.addGestureRecognizer(pinchGesture)
-        view.addGestureRecognizer(rotationGesture)
-        view.addGestureRecognizer(panGesture)
     }
 
     private func setupImageOverlayView() {
@@ -258,5 +206,40 @@ class MainModuleViewController: UIViewController {
             rightOverlay.topAnchor.constraint(equalTo: transparentRectangle.topAnchor),
             rightOverlay.bottomAnchor.constraint(equalTo: transparentRectangle.bottomAnchor)
         ])
+    }
+
+    private func addGestureRecognizers(to view: UIView) {
+        let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch))
+        let rotationGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation))
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+
+        pinchGesture.delegate = self
+        rotationGesture.delegate = self
+        panGesture.delegate = self
+
+        view.addGestureRecognizer(pinchGesture)
+        view.addGestureRecognizer(rotationGesture)
+        view.addGestureRecognizer(panGesture)
+    }
+
+    // MARK: - @objc methods
+
+    @objc private func saveButtonTapped() {
+        viewModel.viewDidSelectSave()
+    }
+
+    @objc private func segmentedControlChanged(_ sender: UISegmentedControl) {
+        viewModel.viewDidSelectFilter(at: sender.selectedSegmentIndex)
+    }
+
+    @objc private func plusButtonTapped() {
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.delegate = self
+        imagePickerController.sourceType = .photoLibrary
+
+        present(
+            imagePickerController,
+            animated: true
+        )
     }
 }
