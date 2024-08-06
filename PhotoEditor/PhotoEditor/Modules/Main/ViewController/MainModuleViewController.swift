@@ -125,7 +125,7 @@ class MainModuleViewController: UIViewController {
         NSLayoutConstraint.activate([
             imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            imageView.topAnchor.constraint(equalTo: segmentedControl.safeAreaLayoutGuide.bottomAnchor),
+            imageView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 12),
             imageView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
 
@@ -143,7 +143,7 @@ class MainModuleViewController: UIViewController {
         NSLayoutConstraint.activate([
             imageOverlayView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             imageOverlayView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-            imageOverlayView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor),
+            imageOverlayView.topAnchor.constraint(equalTo: segmentedControl.bottomAnchor, constant: 12),
             imageOverlayView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
 
@@ -205,6 +205,22 @@ class MainModuleViewController: UIViewController {
             rightOverlay.trailingAnchor.constraint(equalTo: imageOverlayView.trailingAnchor),
             rightOverlay.topAnchor.constraint(equalTo: transparentRectangle.topAnchor),
             rightOverlay.bottomAnchor.constraint(equalTo: transparentRectangle.bottomAnchor)
+        ])
+
+        setupHeadlineBackroundView()
+    }
+
+    private func setupHeadlineBackroundView() {
+        let headlineBackroundView = UIView()
+        headlineBackroundView.backgroundColor = .white
+        view.insertSubview(headlineBackroundView, belowSubview: segmentedControl)
+
+        headlineBackroundView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            headlineBackroundView.topAnchor.constraint(equalTo: view.topAnchor),
+            headlineBackroundView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            headlineBackroundView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            headlineBackroundView.bottomAnchor.constraint(equalTo: imageView.topAnchor)
         ])
     }
 
