@@ -12,14 +12,10 @@
 		7373A4BF2C5A0DBD0009E7E4 /* TabBarModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4BE2C5A0DBD0009E7E4 /* TabBarModuleViewController.swift */; };
 		7373A4C42C5A0DBF0009E7E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7373A4C32C5A0DBF0009E7E4 /* Assets.xcassets */; };
 		7373A4C72C5A0DBF0009E7E4 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 7373A4C62C5A0DBF0009E7E4 /* Base */; };
-		7373A4CF2C5A131B0009E7E4 /* MainModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4CE2C5A131B0009E7E4 /* MainModuleViewController.swift */; };
 		7373A4D12C5A13250009E7E4 /* SettingsModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4D02C5A13250009E7E4 /* SettingsModuleViewController.swift */; };
 		7373A4D62C5A2E870009E7E4 /* SettingsModuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4D52C5A2E870009E7E4 /* SettingsModuleViewModel.swift */; };
 		7373A4DA2C5A2EAA0009E7E4 /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4D92C5A2EAA0009E7E4 /* SettingsItem.swift */; };
 		7373A4DC2C5A3FE10009E7E4 /* SettingItemDetailsModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4DB2C5A3FE10009E7E4 /* SettingItemDetailsModuleViewController.swift */; };
-		7373A4DE2C5A76D30009E7E4 /* MainModuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4DD2C5A76D30009E7E4 /* MainModuleViewModel.swift */; };
-		738113612C5CF35F0058AC0D /* MainModuleViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113602C5CF35F0058AC0D /* MainModuleViewController+Gestures.swift */; };
-		738113642C5CF42D0058AC0D /* MainModuleViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113632C5CF42D0058AC0D /* MainModuleViewController+Delegates.swift */; };
 		738113682C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113672C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift */; };
 		7381136B2C60EE3F0058AC0D /* UIImage+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381136A2C60EE3F0058AC0D /* UIImage+Filter.swift */; };
 		7381136D2C60EED30058AC0D /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381136C2C60EED30058AC0D /* FilterType.swift */; };
@@ -38,14 +34,10 @@
 		7373A4C32C5A0DBF0009E7E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7373A4C62C5A0DBF0009E7E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7373A4C82C5A0DBF0009E7E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		7373A4CE2C5A131B0009E7E4 /* MainModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleViewController.swift; sourceTree = "<group>"; };
 		7373A4D02C5A13250009E7E4 /* SettingsModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModuleViewController.swift; sourceTree = "<group>"; };
 		7373A4D52C5A2E870009E7E4 /* SettingsModuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsModuleViewModel.swift; sourceTree = "<group>"; };
 		7373A4D92C5A2EAA0009E7E4 /* SettingsItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
 		7373A4DB2C5A3FE10009E7E4 /* SettingItemDetailsModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemDetailsModuleViewController.swift; sourceTree = "<group>"; };
-		7373A4DD2C5A76D30009E7E4 /* MainModuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModuleViewModel.swift; sourceTree = "<group>"; };
-		738113602C5CF35F0058AC0D /* MainModuleViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainModuleViewController+Gestures.swift"; sourceTree = "<group>"; };
-		738113632C5CF42D0058AC0D /* MainModuleViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MainModuleViewController+Delegates.swift"; sourceTree = "<group>"; };
 		738113672C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsModuleViewController+Delegates.swift"; sourceTree = "<group>"; };
 		7381136A2C60EE3F0058AC0D /* UIImage+Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Filter.swift"; sourceTree = "<group>"; };
 		7381136C2C60EED30058AC0D /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
@@ -101,7 +93,6 @@
 		7373A4D22C5A2E680009E7E4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				7373A4D72C5A2E8E0009E7E4 /* Main */,
 				738113742C6363130058AC0D /* PhotoEditor */,
 				7373A4DF2C5A786D0009E7E4 /* SettingItemDetails */,
 				7373A4D32C5A2E700009E7E4 /* Settings */,
@@ -129,15 +120,6 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		7373A4D72C5A2E8E0009E7E4 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				7373A4DD2C5A76D30009E7E4 /* MainModuleViewModel.swift */,
-				738113622C5CF3650058AC0D /* ViewController */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
 		7373A4D82C5A2E950009E7E4 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,16 +134,6 @@
 				7373A4DB2C5A3FE10009E7E4 /* SettingItemDetailsModuleViewController.swift */,
 			);
 			path = SettingItemDetails;
-			sourceTree = "<group>";
-		};
-		738113622C5CF3650058AC0D /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				7373A4CE2C5A131B0009E7E4 /* MainModuleViewController.swift */,
-				738113632C5CF42D0058AC0D /* MainModuleViewController+Delegates.swift */,
-				738113602C5CF35F0058AC0D /* MainModuleViewController+Gestures.swift */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		738113652C5CF4F90058AC0D /* SettingsModuleViewController */ = {
@@ -282,10 +254,6 @@
 				7373A4D12C5A13250009E7E4 /* SettingsModuleViewController.swift in Sources */,
 				7381137F2C6397D80058AC0D /* PhotoEditorState.swift in Sources */,
 				738113762C6363260058AC0D /* PhotoEditorModuleViewModel.swift in Sources */,
-				7373A4CF2C5A131B0009E7E4 /* MainModuleViewController.swift in Sources */,
-				738113612C5CF35F0058AC0D /* MainModuleViewController+Gestures.swift in Sources */,
-				7373A4DE2C5A76D30009E7E4 /* MainModuleViewModel.swift in Sources */,
-				738113642C5CF42D0058AC0D /* MainModuleViewController+Delegates.swift in Sources */,
 				7381136B2C60EE3F0058AC0D /* UIImage+Filter.swift in Sources */,
 				738113682C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift in Sources */,
 				7373A4D62C5A2E870009E7E4 /* SettingsModuleViewModel.swift in Sources */,

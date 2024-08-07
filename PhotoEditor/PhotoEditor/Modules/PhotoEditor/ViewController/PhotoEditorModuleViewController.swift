@@ -37,17 +37,27 @@ class PhotoEditorModuleViewController: UIViewController {
         UIImageWriteToSavedPhotosAlbum(
             image,
             self,
-            #selector(didFinishImageSaving(_:error:)),
+            #selector(savingCompleted(_:didFinishSavingWithError:contextInfo:)),
             nil
         )
     }
 
-    @objc private func didFinishImageSaving(_ image: UIImage, error: Error?) {
-        if let error = error {
-            print("Image not saved: \(error.localizedDescription)")
-        } else {
-            print("Image saved successfully!")
-        }
+    @objc func savingCompleted(
+        _ image: UIImage,
+        didFinishSavingWithError error: NSError?,
+        contextInfo: UnsafeRawPointer
+    ) {
+        let title = error == nil ? "Saved!" : "Save error"
+        let message = error?.localizedDescription ?? "Your image has been saved to your photos."
+
+        showSavingResultAlert(title: title, message: message)
+    }
+
+    func showSavingResultAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+
+        present(alert, animated: true)
     }
 
     private func setupBinding() {
