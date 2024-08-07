@@ -20,6 +20,19 @@ class PhotoEditorModuleViewController: UIViewController {
         photoEditorView.center = .init(x: view.center.x, y: view.center.y)
     }
 
+    func setupSaveButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(named: "externaldrive"),
+            style: .plain,
+            target: self,
+            action: #selector(saveButtonTapped)
+        )
+    }
+
+    @objc private func saveButtonTapped() {
+        debugPrint("saveButtonTapped")
+    }
+
     private func setupBinding() {
         viewModel.filteredImage
             .sink { [weak self] newImage in
@@ -45,7 +58,7 @@ class PhotoEditorModuleViewController: UIViewController {
         view.addSubview(filters)
         filters.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            filters.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            filters.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12),
             filters.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             filters.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
         ])
@@ -118,6 +131,7 @@ class PhotoEditorModuleViewController: UIViewController {
         addGestureRecognizers(to: imageView)
 
         setupFilters()
+        setupSaveButton()
 
         return photoEditorView
     }()
