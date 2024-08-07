@@ -20,7 +20,7 @@ final class MainModuleViewModel {
             return
         }
 
-        selectedImage.value = image.addFilter(filter)
+        selectedImage.value = image.withFilter(filter)
     }
 
     // MARK: - Intents

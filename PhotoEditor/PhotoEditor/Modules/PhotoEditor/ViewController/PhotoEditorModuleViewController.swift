@@ -1,8 +1,8 @@
 import Combine
 import UIKit
 
-class Main2ModuleViewController: UIViewController {
-    let viewModel: Main2ModuleViewModel = .init()
+class PhotoEditorModuleViewController: UIViewController {
+    let viewModel: PhotoEditorModuleViewModel = .init()
     var cancellables: Set<AnyCancellable> = .init()
     let imageView: UIImageView = .init()
 
@@ -21,7 +21,7 @@ class Main2ModuleViewController: UIViewController {
     }
 
     private func setupBinding() {
-        viewModel.selectedImage
+        viewModel.filteredImage
             .sink { [weak self] newImage in
                 guard let self else {
                     return
@@ -113,6 +113,7 @@ class Main2ModuleViewController: UIViewController {
         photoEditorView.clipsToBounds = true
 
         imageView.frame = photoEditorView.bounds
+        imageView.contentMode = .scaleAspectFit
         imageView.isUserInteractionEnabled = true
         addGestureRecognizers(to: imageView)
 
@@ -135,10 +136,8 @@ class Main2ModuleViewController: UIViewController {
         view.addGestureRecognizer(panGesture)
     }
 
-    // filters
-
     private lazy var filters: UISegmentedControl = {
-        let segmentedControl: UISegmentedControl = .init(items: FilterType.allCases.map { $0.rawValue })
+        let segmentedControl: UISegmentedControl = .init(items: viewModel.filters.map { $0.rawValue })
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(
             self,
@@ -149,5 +148,8 @@ class Main2ModuleViewController: UIViewController {
         return segmentedControl
     }()
 
-    @objc private func filterChanged(_ sender: UISegmentedControl) {}
+    @objc private func filterChanged(_ sender: UISegmentedControl) {
+        let selectedFilter = viewModel.filters[sender.selectedSegmentIndex]
+        viewModel.viewDidSelectFilter(selectedFilter)
+    }
 }

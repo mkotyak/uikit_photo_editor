@@ -23,10 +23,10 @@
 		738113682C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113672C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift */; };
 		7381136B2C60EE3F0058AC0D /* UIImage+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381136A2C60EE3F0058AC0D /* UIImage+Filter.swift */; };
 		7381136D2C60EED30058AC0D /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381136C2C60EED30058AC0D /* FilterType.swift */; };
-		738113762C6363260058AC0D /* Main2ModuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113752C6363260058AC0D /* Main2ModuleViewModel.swift */; };
-		738113792C6363380058AC0D /* Main2ModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113782C6363380058AC0D /* Main2ModuleViewController.swift */; };
-		7381137B2C6363410058AC0D /* Main2ModuleViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137A2C6363410058AC0D /* Main2ModuleViewController+Delegates.swift */; };
-		7381137D2C6363490058AC0D /* Main2ModuleViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137C2C6363490058AC0D /* Main2ModuleViewController+Gestures.swift */; };
+		738113762C6363260058AC0D /* PhotoEditorModuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113752C6363260058AC0D /* PhotoEditorModuleViewModel.swift */; };
+		738113792C6363380058AC0D /* PhotoEditorModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113782C6363380058AC0D /* PhotoEditorModuleViewController.swift */; };
+		7381137B2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137A2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift */; };
+		7381137D2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137C2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,10 +48,10 @@
 		738113672C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsModuleViewController+Delegates.swift"; sourceTree = "<group>"; };
 		7381136A2C60EE3F0058AC0D /* UIImage+Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Filter.swift"; sourceTree = "<group>"; };
 		7381136C2C60EED30058AC0D /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
-		738113752C6363260058AC0D /* Main2ModuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main2ModuleViewModel.swift; sourceTree = "<group>"; };
-		738113782C6363380058AC0D /* Main2ModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Main2ModuleViewController.swift; sourceTree = "<group>"; };
-		7381137A2C6363410058AC0D /* Main2ModuleViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main2ModuleViewController+Delegates.swift"; sourceTree = "<group>"; };
-		7381137C2C6363490058AC0D /* Main2ModuleViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Main2ModuleViewController+Gestures.swift"; sourceTree = "<group>"; };
+		738113752C6363260058AC0D /* PhotoEditorModuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorModuleViewModel.swift; sourceTree = "<group>"; };
+		738113782C6363380058AC0D /* PhotoEditorModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorModuleViewController.swift; sourceTree = "<group>"; };
+		7381137A2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditorModuleViewController+Delegates.swift"; sourceTree = "<group>"; };
+		7381137C2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditorModuleViewController+Gestures.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,7 +99,7 @@
 		7373A4D22C5A2E680009E7E4 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				738113742C6363130058AC0D /* Main2 */,
+				738113742C6363130058AC0D /* PhotoEditor */,
 				7373A4D72C5A2E8E0009E7E4 /* Main */,
 				7373A4DF2C5A786D0009E7E4 /* SettingItemDetails */,
 				7373A4D32C5A2E700009E7E4 /* Settings */,
@@ -178,21 +178,21 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		738113742C6363130058AC0D /* Main2 */ = {
+		738113742C6363130058AC0D /* PhotoEditor */ = {
 			isa = PBXGroup;
 			children = (
-				738113752C6363260058AC0D /* Main2ModuleViewModel.swift */,
+				738113752C6363260058AC0D /* PhotoEditorModuleViewModel.swift */,
 				738113772C63632C0058AC0D /* ViewController */,
 			);
-			path = Main2;
+			path = PhotoEditor;
 			sourceTree = "<group>";
 		};
 		738113772C63632C0058AC0D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				738113782C6363380058AC0D /* Main2ModuleViewController.swift */,
-				7381137A2C6363410058AC0D /* Main2ModuleViewController+Delegates.swift */,
-				7381137C2C6363490058AC0D /* Main2ModuleViewController+Gestures.swift */,
+				738113782C6363380058AC0D /* PhotoEditorModuleViewController.swift */,
+				7381137A2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift */,
+				7381137C2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -267,17 +267,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7381137D2C6363490058AC0D /* Main2ModuleViewController+Gestures.swift in Sources */,
-				7381137B2C6363410058AC0D /* Main2ModuleViewController+Delegates.swift in Sources */,
+				7381137D2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift in Sources */,
+				7381137B2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift in Sources */,
 				7373A4DC2C5A3FE10009E7E4 /* SettingItemDetailsModuleViewController.swift in Sources */,
 				7373A4BF2C5A0DBD0009E7E4 /* TabBarModuleController.swift in Sources */,
 				7373A4BB2C5A0DBD0009E7E4 /* AppDelegate.swift in Sources */,
 				7381136D2C60EED30058AC0D /* FilterType.swift in Sources */,
 				7373A4DA2C5A2EAA0009E7E4 /* SettingsItem.swift in Sources */,
 				7373A4BD2C5A0DBD0009E7E4 /* SceneDelegate.swift in Sources */,
-				738113792C6363380058AC0D /* Main2ModuleViewController.swift in Sources */,
+				738113792C6363380058AC0D /* PhotoEditorModuleViewController.swift in Sources */,
 				7373A4D12C5A13250009E7E4 /* SettingsModuleViewController.swift in Sources */,
-				738113762C6363260058AC0D /* Main2ModuleViewModel.swift in Sources */,
+				738113762C6363260058AC0D /* PhotoEditorModuleViewModel.swift in Sources */,
 				7373A4CF2C5A131B0009E7E4 /* MainModuleViewController.swift in Sources */,
 				738113612C5CF35F0058AC0D /* MainModuleViewController+Gestures.swift in Sources */,
 				7373A4DE2C5A76D30009E7E4 /* MainModuleViewModel.swift in Sources */,

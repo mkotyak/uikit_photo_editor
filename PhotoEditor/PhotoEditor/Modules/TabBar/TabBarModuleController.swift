@@ -7,7 +7,7 @@ class TabBarModuleController: UITabBarController {
     }
 
     private func configureTabs() {
-        let mainViewController: Main2ModuleViewController = .init()
+        let mainViewController: PhotoEditorModuleViewController = .init()
 //        let mainViewController: MainModuleViewController = .init()
         mainViewController.tabBarItem.image = .init(systemName: "scribble.variable")
         mainViewController.tabBarItem.title = "Main"

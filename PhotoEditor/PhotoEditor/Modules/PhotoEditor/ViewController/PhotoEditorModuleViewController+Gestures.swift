@@ -1,6 +1,6 @@
 import UIKit
 
-extension Main2ModuleViewController {
+extension PhotoEditorModuleViewController {
     @objc func handlePinch(_ gesture: UIPinchGestureRecognizer) {
         guard let view = gesture.view else {
             return

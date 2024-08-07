@@ -2,11 +2,11 @@ import UIKit
 
 // MARK: - UINavigationControllerDelegate
 
-extension Main2ModuleViewController: UINavigationControllerDelegate {}
+extension PhotoEditorModuleViewController: UINavigationControllerDelegate {}
 
 // MARK: - UIImagePickerControllerDelegate
 
-extension Main2ModuleViewController: UIImagePickerControllerDelegate {
+extension PhotoEditorModuleViewController: UIImagePickerControllerDelegate {
     func imagePickerController(
         _ picker: UIImagePickerController,
         didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]
@@ -33,7 +33,7 @@ extension Main2ModuleViewController: UIImagePickerControllerDelegate {
 
 // MARK: - UIGestureRecognizerDelegate
 
-extension Main2ModuleViewController: UIGestureRecognizerDelegate {
+extension PhotoEditorModuleViewController: UIGestureRecognizerDelegate {
     func gestureRecognizer(
         _ gestureRecognizer: UIGestureRecognizer,
         shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer
