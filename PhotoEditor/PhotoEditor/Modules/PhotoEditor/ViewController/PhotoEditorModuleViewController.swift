@@ -30,7 +30,7 @@ class PhotoEditorModuleViewController: UIViewController {
     }
 
     @objc private func saveButtonTapped() {
-        debugPrint("saveButtonTapped")
+        viewModel.viewDidSelectSave()
     }
 
     private func setupBinding() {

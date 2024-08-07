@@ -1,6 +1,6 @@
 import UIKit
 
-class TabBarModuleController: UITabBarController {
+class TabBarModuleViewController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureTabs()
@@ -8,7 +8,6 @@ class TabBarModuleController: UITabBarController {
 
     private func configureTabs() {
         let mainViewController: PhotoEditorModuleViewController = .init()
-//        let mainViewController: MainModuleViewController = .init()
         mainViewController.tabBarItem.image = .init(systemName: "scribble.variable")
         mainViewController.tabBarItem.title = "Main"
 

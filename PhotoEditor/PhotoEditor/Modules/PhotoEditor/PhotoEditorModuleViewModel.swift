@@ -2,6 +2,7 @@ import Combine
 import UIKit
 
 final class PhotoEditorModuleViewModel {
+    private let imageSaver: ImageSaverProtocol = ImageSaver()
     private(set) var state: CurrentValueSubject<PhotoEditorState, Never> = .init(.init())
 
     var filters: [FilterType] {
@@ -9,12 +10,12 @@ final class PhotoEditorModuleViewModel {
     }
 
     private func applyFilter() {
-        guard let selectedImage = state.value.selectedImage else {
+        guard state.value.selectedImage != nil else {
             state.value.filteredImage = nil
             return
         }
 
-        guard let appliedFilterName = state.value.appliedFilter.name else {
+        guard state.value.appliedFilter.name != nil else {
             state.value.filteredImage = state.value.selectedImage
             return
         }
@@ -40,5 +41,13 @@ final class PhotoEditorModuleViewModel {
     func viewDidSelectFilter(_ filter: FilterType) {
         updateAppliedFilter(with: filter)
         applyFilter()
+    }
+
+    func viewDidSelectSave() {
+        guard let image = state.value.filteredImage else {
+            return
+        }
+
+        imageSaver.writeToPhotoAlbum(image: image)
     }
 }
