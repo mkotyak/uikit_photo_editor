@@ -34,13 +34,13 @@ class PhotoEditorModuleViewController: UIViewController {
     }
 
     private func setupBinding() {
-        viewModel.filteredImage
-            .sink { [weak self] newImage in
+        viewModel.state
+            .sink { [weak self] newState in
                 guard let self else {
                     return
                 }
 
-                updateImageView(with: newImage)
+                updateImageView(with: newState.filteredImage)
             }
             .store(in: &cancellables)
     }

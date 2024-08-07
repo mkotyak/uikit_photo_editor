@@ -27,6 +27,7 @@
 		738113792C6363380058AC0D /* PhotoEditorModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113782C6363380058AC0D /* PhotoEditorModuleViewController.swift */; };
 		7381137B2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137A2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift */; };
 		7381137D2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137C2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift */; };
+		7381137F2C6397D80058AC0D /* PhotoEditorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137E2C6397D80058AC0D /* PhotoEditorState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		738113782C6363380058AC0D /* PhotoEditorModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorModuleViewController.swift; sourceTree = "<group>"; };
 		7381137A2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditorModuleViewController+Delegates.swift"; sourceTree = "<group>"; };
 		7381137C2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditorModuleViewController+Gestures.swift"; sourceTree = "<group>"; };
+		7381137E2C6397D80058AC0D /* PhotoEditorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				7381136C2C60EED30058AC0D /* FilterType.swift */,
+				7381137E2C6397D80058AC0D /* PhotoEditorState.swift */,
 				7373A4D92C5A2EAA0009E7E4 /* SettingsItem.swift */,
 			);
 			path = Models;
@@ -277,6 +280,7 @@
 				7373A4BD2C5A0DBD0009E7E4 /* SceneDelegate.swift in Sources */,
 				738113792C6363380058AC0D /* PhotoEditorModuleViewController.swift in Sources */,
 				7373A4D12C5A13250009E7E4 /* SettingsModuleViewController.swift in Sources */,
+				7381137F2C6397D80058AC0D /* PhotoEditorState.swift in Sources */,
 				738113762C6363260058AC0D /* PhotoEditorModuleViewModel.swift in Sources */,
 				7373A4CF2C5A131B0009E7E4 /* MainModuleViewController.swift in Sources */,
 				738113612C5CF35F0058AC0D /* MainModuleViewController+Gestures.swift in Sources */,

@@ -2,35 +2,43 @@ import Combine
 import UIKit
 
 final class PhotoEditorModuleViewModel {
-    private var selectedImage: UIImage?
-    private var appliedFilter: FilterType = .original
+    private(set) var state: CurrentValueSubject<PhotoEditorState, Never> = .init(.init())
 
-    var filteredImage: CurrentValueSubject<UIImage?, Never> = .init(nil)
-    let filters: [FilterType] = FilterType.allCases
+    var filters: [FilterType] {
+        state.value.filters
+    }
 
     private func applyFilter() {
-        guard let selectedImage else {
-            filteredImage.value = nil
+        guard let selectedImage = state.value.selectedImage else {
+            state.value.filteredImage = nil
             return
         }
 
-        guard appliedFilter.name != nil else {
-            filteredImage.value = selectedImage
+        guard let appliedFilterName = state.value.appliedFilter.name else {
+            state.value.filteredImage = state.value.selectedImage
             return
         }
 
-        filteredImage.value = selectedImage.withFilter(appliedFilter)
+        state.value.filteredImage = state.value.selectedImage?.withFilter(state.value.appliedFilter)
+    }
+
+    private func updateSelectedImage(with newImage: UIImage) {
+        state.value.selectedImage = newImage
+    }
+
+    private func updateAppliedFilter(with newFilter: FilterType) {
+        state.value.appliedFilter = newFilter
     }
 
     // MARK: - Intents
 
     func viewDidSelectImage(_ newImage: UIImage) {
-        selectedImage = newImage
+        updateSelectedImage(with: newImage)
         applyFilter()
     }
 
     func viewDidSelectFilter(_ filter: FilterType) {
-        appliedFilter = filter
+        updateAppliedFilter(with: filter)
         applyFilter()
     }
 }
