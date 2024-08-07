@@ -1,12 +1,15 @@
 import Foundation
 
 enum FilterType: String, CaseIterable {
-    case mono
+    case original = "ORIGINAL"
+    case mono = "MONO"
 
-    var name: String {
+    var name: String? {
         switch self {
+        case .original:
+            return nil
         case .mono:
-            "CIPhotoEffectMono"
+            return "CIPhotoEffectMono"
         }
     }
 }

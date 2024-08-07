@@ -41,6 +41,16 @@ class Main2ModuleViewController: UIViewController {
         ])
     }
 
+    private func setupFilters() {
+        view.addSubview(filters)
+        filters.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            filters.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            filters.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            filters.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
+        ])
+    }
+
     private func updateImageView(with newImage: UIImage?) {
         imageView.image = newImage
     }
@@ -106,6 +116,8 @@ class Main2ModuleViewController: UIViewController {
         imageView.isUserInteractionEnabled = true
         addGestureRecognizers(to: imageView)
 
+        setupFilters()
+
         return photoEditorView
     }()
 
@@ -122,4 +134,20 @@ class Main2ModuleViewController: UIViewController {
         view.addGestureRecognizer(rotationGesture)
         view.addGestureRecognizer(panGesture)
     }
+
+    // filters
+
+    private lazy var filters: UISegmentedControl = {
+        let segmentedControl: UISegmentedControl = .init(items: FilterType.allCases.map { $0.rawValue })
+        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.addTarget(
+            self,
+            action: #selector(filterChanged(_:)),
+            for: .valueChanged
+        )
+
+        return segmentedControl
+    }()
+
+    @objc private func filterChanged(_ sender: UISegmentedControl) {}
 }
