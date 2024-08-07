@@ -28,8 +28,6 @@
 		7381137B2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137A2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift */; };
 		7381137D2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137C2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift */; };
 		7381137F2C6397D80058AC0D /* PhotoEditorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137E2C6397D80058AC0D /* PhotoEditorState.swift */; };
-		738113822C63BA470058AC0D /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113812C63BA470058AC0D /* ImageSaver.swift */; };
-		738113842C63BAC50058AC0D /* ImageSaverProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113832C63BAC50058AC0D /* ImageSaverProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -56,8 +54,6 @@
 		7381137A2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditorModuleViewController+Delegates.swift"; sourceTree = "<group>"; };
 		7381137C2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditorModuleViewController+Gestures.swift"; sourceTree = "<group>"; };
 		7381137E2C6397D80058AC0D /* PhotoEditorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorState.swift; sourceTree = "<group>"; };
-		738113812C63BA470058AC0D /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
-		738113832C63BAC50058AC0D /* ImageSaverProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaverProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,7 +94,6 @@
 				7373A4C52C5A0DBF0009E7E4 /* LaunchScreen.storyboard */,
 				7373A4D42C5A2E780009E7E4 /* Models */,
 				7373A4D22C5A2E680009E7E4 /* Modules */,
-				738113802C63BA2F0058AC0D /* Services */,
 			);
 			path = PhotoEditor;
 			sourceTree = "<group>";
@@ -205,15 +200,6 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
-		738113802C63BA2F0058AC0D /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				738113812C63BA470058AC0D /* ImageSaver.swift */,
-				738113832C63BAC50058AC0D /* ImageSaverProtocol.swift */,
-			);
-			path = Services;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -291,7 +277,6 @@
 				7373A4BB2C5A0DBD0009E7E4 /* AppDelegate.swift in Sources */,
 				7381136D2C60EED30058AC0D /* FilterType.swift in Sources */,
 				7373A4DA2C5A2EAA0009E7E4 /* SettingsItem.swift in Sources */,
-				738113822C63BA470058AC0D /* ImageSaver.swift in Sources */,
 				7373A4BD2C5A0DBD0009E7E4 /* SceneDelegate.swift in Sources */,
 				738113792C6363380058AC0D /* PhotoEditorModuleViewController.swift in Sources */,
 				7373A4D12C5A13250009E7E4 /* SettingsModuleViewController.swift in Sources */,
@@ -303,7 +288,6 @@
 				738113642C5CF42D0058AC0D /* MainModuleViewController+Delegates.swift in Sources */,
 				7381136B2C60EE3F0058AC0D /* UIImage+Filter.swift in Sources */,
 				738113682C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift in Sources */,
-				738113842C63BAC50058AC0D /* ImageSaverProtocol.swift in Sources */,
 				7373A4D62C5A2E870009E7E4 /* SettingsModuleViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

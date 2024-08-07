@@ -30,7 +30,24 @@ class PhotoEditorModuleViewController: UIViewController {
     }
 
     @objc private func saveButtonTapped() {
-        viewModel.viewDidSelectSave()
+        guard let image = imageView.image else {
+            return
+        }
+
+        UIImageWriteToSavedPhotosAlbum(
+            image,
+            self,
+            #selector(didFinishImageSaving(_:error:)),
+            nil
+        )
+    }
+
+    @objc private func didFinishImageSaving(_ image: UIImage, error: Error?) {
+        if let error = error {
+            print("Image not saved: \(error.localizedDescription)")
+        } else {
+            print("Image saved successfully!")
+        }
     }
 
     private func setupBinding() {
