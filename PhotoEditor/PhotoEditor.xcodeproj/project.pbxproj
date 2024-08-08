@@ -25,6 +25,9 @@
 		7381137D2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137C2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift */; };
 		7381137F2C6397D80058AC0D /* PhotoEditorModuleState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137E2C6397D80058AC0D /* PhotoEditorModuleState.swift */; };
 		7381138E2C64D3240058AC0D /* Collection+SafeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381138D2C64D3240058AC0D /* Collection+SafeIndex.swift */; };
+		738113962C64F7E40058AC0D /* PhotoEditorModuleEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113952C64F7E40058AC0D /* PhotoEditorModuleEditorView.swift */; };
+		7381139A2C650AD40058AC0D /* PhotoEditorModuleViewModel+TargetActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113992C650AD40058AC0D /* PhotoEditorModuleViewModel+TargetActions.swift */; };
+		7381139C2C650CB00058AC0D /* PhotoEditorModuleAddButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381139B2C650CB00058AC0D /* PhotoEditorModuleAddButtonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +51,9 @@
 		7381137C2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditorModuleViewController+Gestures.swift"; sourceTree = "<group>"; };
 		7381137E2C6397D80058AC0D /* PhotoEditorModuleState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorModuleState.swift; sourceTree = "<group>"; };
 		7381138D2C64D3240058AC0D /* Collection+SafeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeIndex.swift"; sourceTree = "<group>"; };
+		738113952C64F7E40058AC0D /* PhotoEditorModuleEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorModuleEditorView.swift; sourceTree = "<group>"; };
+		738113992C650AD40058AC0D /* PhotoEditorModuleViewModel+TargetActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditorModuleViewModel+TargetActions.swift"; sourceTree = "<group>"; };
+		7381139B2C650CB00058AC0D /* PhotoEditorModuleAddButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorModuleAddButtonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +167,7 @@
 				7381137E2C6397D80058AC0D /* PhotoEditorModuleState.swift */,
 				738113752C6363260058AC0D /* PhotoEditorModuleViewModel.swift */,
 				738113772C63632C0058AC0D /* ViewController */,
+				738113942C64F7CC0058AC0D /* Views */,
 			);
 			path = PhotoEditor;
 			sourceTree = "<group>";
@@ -171,6 +178,7 @@
 				738113782C6363380058AC0D /* PhotoEditorModuleViewController.swift */,
 				7381137A2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift */,
 				7381137C2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift */,
+				738113992C650AD40058AC0D /* PhotoEditorModuleViewModel+TargetActions.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -189,6 +197,15 @@
 				7381136A2C60EE3F0058AC0D /* UIImage+Filter.swift */,
 			);
 			path = UIImage;
+			sourceTree = "<group>";
+		};
+		738113942C64F7CC0058AC0D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				7381139B2C650CB00058AC0D /* PhotoEditorModuleAddButtonView.swift */,
+				738113952C64F7E40058AC0D /* PhotoEditorModuleEditorView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -267,12 +284,15 @@
 				7381138E2C64D3240058AC0D /* Collection+SafeIndex.swift in Sources */,
 				7373A4BF2C5A0DBD0009E7E4 /* TabBarModuleViewController.swift in Sources */,
 				7373A4BB2C5A0DBD0009E7E4 /* AppDelegate.swift in Sources */,
+				738113962C64F7E40058AC0D /* PhotoEditorModuleEditorView.swift in Sources */,
 				7381136D2C60EED30058AC0D /* Filter.swift in Sources */,
 				7373A4DA2C5A2EAA0009E7E4 /* CellItem.swift in Sources */,
+				7381139C2C650CB00058AC0D /* PhotoEditorModuleAddButtonView.swift in Sources */,
 				7373A4BD2C5A0DBD0009E7E4 /* SceneDelegate.swift in Sources */,
 				738113792C6363380058AC0D /* PhotoEditorModuleViewController.swift in Sources */,
 				7373A4D12C5A13250009E7E4 /* SettingsModuleViewController.swift in Sources */,
 				7381137F2C6397D80058AC0D /* PhotoEditorModuleState.swift in Sources */,
+				7381139A2C650AD40058AC0D /* PhotoEditorModuleViewModel+TargetActions.swift in Sources */,
 				738113762C6363260058AC0D /* PhotoEditorModuleViewModel.swift in Sources */,
 				7381136B2C60EE3F0058AC0D /* UIImage+Filter.swift in Sources */,
 				738113682C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift in Sources */,

@@ -16,8 +16,8 @@ extension PhotoEditorModuleViewController: UIImagePickerControllerDelegate {
         }
 
         viewModel.viewDidSelectImage(selectedImage)
-        addButton.removeFromSuperview()
-        setupPhotoEditorView()
+        reloadView()
+
         dismiss(animated: true)
     }
 }

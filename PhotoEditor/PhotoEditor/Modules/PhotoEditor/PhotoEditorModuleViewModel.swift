@@ -8,6 +8,10 @@ final class PhotoEditorModuleViewModel {
         state.value.availableFilters
     }
 
+    var hasSelectedImage: Bool {
+        state.value.selectedImage != nil
+    }
+
     private func applyFilter() {
         guard let selectedImage = state.value.selectedImage else {
             return

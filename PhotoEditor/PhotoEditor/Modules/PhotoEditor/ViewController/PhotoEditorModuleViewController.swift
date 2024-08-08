@@ -4,188 +4,94 @@ import UIKit
 class PhotoEditorModuleViewController: UIViewController {
     let viewModel: PhotoEditorModuleViewModel = .init()
     var cancellables: Set<AnyCancellable> = .init()
-    let imageView: UIImageView = .init()
+    
+    lazy var photoEditorView: PhotoEditorModuleEditorView = .init()
+    private lazy var addButtonView: PhotoEditorModuleAddButtonView = .init()
+    
+    private lazy var filtersControl: UISegmentedControl = {
+        let control = UISegmentedControl(items: viewModel.availableFilters.map { $0.controlTitle })
+        control.selectedSegmentIndex = 0
+        control.addTarget(self, action: #selector(filterChanged(_:)), for: .valueChanged)
 
+        return control
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
-
-        setupAddButton()
+        
+        setupView()
+        setupConstraints()
         setupBinding()
+        
+        reloadView()
     }
-
-    func setupPhotoEditorView() {
-        view.addSubview(photoEditorView)
-        photoEditorView.translatesAutoresizingMaskIntoConstraints = false
-        photoEditorView.center = .init(x: view.center.x, y: view.center.y)
-    }
-
-    func setupSaveButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "externaldrive"),
-            style: .plain,
-            target: self,
-            action: #selector(saveButtonTapped)
-        )
-    }
-
-    @objc private func saveButtonTapped() {
-        guard let image = imageView.image else {
-            return
-        }
-
-        UIImageWriteToSavedPhotosAlbum(
-            image,
-            self,
-            #selector(savingCompleted(_:didFinishSavingWithError:contextInfo:)),
-            nil
-        )
-    }
-
-    @objc func savingCompleted(
-        _ image: UIImage,
-        didFinishSavingWithError error: NSError?,
-        contextInfo: UnsafeRawPointer
-    ) {
-        let title = error == nil ? "Saved!" : "Save error"
-        let message = error?.localizedDescription ?? "Your image has been saved to your photos."
-
-        showSavingResultAlert(title: title, message: message)
-    }
-
-    func showSavingResultAlert(title: String, message: String) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default))
-
-        present(alert, animated: true)
-    }
-
-    private func setupBinding() {
-        viewModel.state
-            .sink { [weak self] newState in
-                self?.imageView.image = newState.filteredImage
-            }
-            .store(in: &cancellables)
-    }
-
-    private func setupAddButton() {
-        view.addSubview(addButton)
-        addButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            addButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            addButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
-        ])
-    }
-
-    private func setupFilters() {
-        view.addSubview(filters)
-        filters.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            filters.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12),
-            filters.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
-            filters.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
-        ])
-    }
-
-    // MARK: - UI Elements
-
-    // addButton
-
-    lazy var addButton: UIButton = {
-        let button = UIButton(type: .custom)
-        button.frame = CGRect(x: 0, y: 0, width: 80, height: 80)
-        button.setImage(
-            UIImage(systemName: "plus"),
-            for: .normal
-        )
-        button.imageView?.contentMode = .scaleAspectFit
-        button.addTarget(
-            self,
-            action: #selector(addButtonTapped),
-            for: .touchUpInside
-        )
-
-        if let imageView = button.imageView {
-            imageView.translatesAutoresizingMaskIntoConstraints = false
-            NSLayoutConstraint.activate([
-                imageView.widthAnchor.constraint(equalToConstant: 80),
-                imageView.heightAnchor.constraint(equalToConstant: 80),
-                imageView.centerXAnchor.constraint(equalTo: button.centerXAnchor),
-                imageView.centerYAnchor.constraint(equalTo: button.centerYAnchor)
-            ])
-        }
-
-        return button
-    }()
-
-    @objc private func addButtonTapped() {
-        let imagePickerController = UIImagePickerController()
-        imagePickerController.delegate = self
-        imagePickerController.sourceType = .photoLibrary
-
-        present(
-            imagePickerController,
-            animated: true
-        )
-    }
-
-    // photoEditorView
-
-    private lazy var photoEditorView: UIView = {
-        let photoEditorView = UIView(frame: CGRect(
-            x: 0,
-            y: 0,
-            width: 350,
-            height: 350
-        ))
-        photoEditorView.layer.borderWidth = 4
-        photoEditorView.layer.borderColor = UIColor.yellow.cgColor
-
-        photoEditorView.addSubview(imageView)
-        photoEditorView.clipsToBounds = true
-
-        imageView.frame = photoEditorView.bounds
-        imageView.contentMode = .scaleAspectFit
-        imageView.isUserInteractionEnabled = true
-        addGestureRecognizers(to: imageView)
-
-        setupFilters()
-        setupSaveButton()
-
-        return photoEditorView
-    }()
-
-    private func addGestureRecognizers(to view: UIView) {
+    
+    private func setupView() {
+        view.backgroundColor = .white
+        
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(handlePinch))
         let rotationGesture = UIRotationGestureRecognizer(target: self, action: #selector(handleRotation))
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-
+                
         pinchGesture.delegate = self
         rotationGesture.delegate = self
         panGesture.delegate = self
-
-        view.addGestureRecognizer(pinchGesture)
-        view.addGestureRecognizer(rotationGesture)
-        view.addGestureRecognizer(panGesture)
-    }
-
-    private lazy var filters: UISegmentedControl = {
-        let segmentedControl: UISegmentedControl = .init(items: viewModel.availableFilters.map { $0.controlTitle })
-        segmentedControl.selectedSegmentIndex = 0
-        segmentedControl.addTarget(
-            self,
-            action: #selector(filterChanged(_:)),
-            for: .valueChanged
+                
+        photoEditorView.addGestureRecognizers(
+            pinchGesture: pinchGesture,
+            rotationGesture: rotationGesture,
+            panGesture: panGesture
         )
-
-        return segmentedControl
-    }()
-
-    @objc private func filterChanged(_ sender: UISegmentedControl) {
-        guard let selectedFilter = viewModel.availableFilters[safe: sender.selectedSegmentIndex] else {
-            return
-        }
-
-        viewModel.viewDidSelectFilter(selectedFilter)
+        
+        addButtonView.addTarget(self, action: #selector(addButtonTapped), for: .touchUpInside)
+        
+        view.addSubview(photoEditorView)
+        view.addSubview(filtersControl)
+        view.addSubview(addButtonView)
+    }
+    
+    private func setupConstraints() {
+        photoEditorView.translatesAutoresizingMaskIntoConstraints = false
+        filtersControl.translatesAutoresizingMaskIntoConstraints = false
+        addButtonView.translatesAutoresizingMaskIntoConstraints = false
+        
+        NSLayoutConstraint.activate([
+            photoEditorView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            photoEditorView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            photoEditorView.widthAnchor.constraint(equalToConstant: 350),
+            photoEditorView.heightAnchor.constraint(equalToConstant: 350),
+            
+            filtersControl.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12),
+            filtersControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
+            filtersControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15),
+            
+            addButtonView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            addButtonView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            addButtonView.widthAnchor.constraint(equalToConstant: 80),
+            addButtonView.heightAnchor.constraint(equalToConstant: 80)
+        ])
+    }
+    
+    private func setupBinding() {
+        viewModel.state
+            .sink { [weak self] newState in
+                self?.photoEditorView.imageView.image = newState.filteredImage
+            }
+            .store(in: &cancellables)
+    }
+    
+    func reloadView() {
+        navigationItem.rightBarButtonItem = viewModel.hasSelectedImage
+            ? UIBarButtonItem(
+                image: UIImage(named: "externaldrive"),
+                style: .plain,
+                target: self,
+                action: #selector(saveButtonTapped)
+            )
+            : nil
+        
+        addButtonView.isHidden = viewModel.hasSelectedImage
+        filtersControl.isHidden = !viewModel.hasSelectedImage
+        photoEditorView.isHidden = !viewModel.hasSelectedImage
     }
 }
