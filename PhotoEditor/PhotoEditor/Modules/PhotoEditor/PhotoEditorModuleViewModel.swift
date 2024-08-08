@@ -2,7 +2,7 @@ import Combine
 import UIKit
 
 final class PhotoEditorModuleViewModel {
-    private(set) var state: CurrentValueSubject<PhotoEditorState, Never> = .init(.init())
+    private(set) var state: CurrentValueSubject<PhotoEditorModuleState, Never> = .init(.init())
 
     var availableFilters: [Filter] {
         state.value.availableFilters

@@ -1,6 +1,6 @@
 import UIKit
 
-struct PhotoEditorState {
+struct PhotoEditorModuleState {
     var selectedImage: UIImage? {
         didSet {
             if selectedImage == nil {
