@@ -2,7 +2,7 @@ import Combine
 import Foundation
 
 final class SettingsModuleViewModel {
-    var settingsItems: CurrentValueSubject<[SettingsItem], Never> = .init([.init(title: "About Us")])
+    var settingsItems: CurrentValueSubject<[CellItem], Never> = .init([.init(title: "About Us")])
 
     // MARK: - Intents
 
