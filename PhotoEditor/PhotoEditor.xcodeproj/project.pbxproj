@@ -18,12 +18,13 @@
 		7373A4DC2C5A3FE10009E7E4 /* SettingItemDetailsModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7373A4DB2C5A3FE10009E7E4 /* SettingItemDetailsModuleViewController.swift */; };
 		738113682C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113672C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift */; };
 		7381136B2C60EE3F0058AC0D /* UIImage+Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381136A2C60EE3F0058AC0D /* UIImage+Filter.swift */; };
-		7381136D2C60EED30058AC0D /* FilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381136C2C60EED30058AC0D /* FilterType.swift */; };
-		738113762C6363260058AC0D /* PhotoEditorModuleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113752C6363260058AC0D /* PhotoEditorModuleViewModel.swift */; };
-		738113792C6363380058AC0D /* PhotoEditorModuleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113782C6363380058AC0D /* PhotoEditorModuleViewController.swift */; };
-		7381137B2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137A2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift */; };
-		7381137D2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137C2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift */; };
-		7381137F2C6397D80058AC0D /* PhotoEditorState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137E2C6397D80058AC0D /* PhotoEditorState.swift */; };
+		7381136D2C60EED30058AC0D /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381136C2C60EED30058AC0D /* Filter.swift */; };
+		738113762C6363260058AC0D /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113752C6363260058AC0D /* ViewModel.swift */; };
+		738113792C6363380058AC0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738113782C6363380058AC0D /* ViewController.swift */; };
+		7381137B2C6363410058AC0D /* ViewController+Delegates.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137A2C6363410058AC0D /* ViewController+Delegates.swift */; };
+		7381137D2C6363490058AC0D /* ViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137C2C6363490058AC0D /* ViewController+Gestures.swift */; };
+		7381137F2C6397D80058AC0D /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381137E2C6397D80058AC0D /* State.swift */; };
+		7381138E2C64D3240058AC0D /* Collection+SafeIndex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7381138D2C64D3240058AC0D /* Collection+SafeIndex.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,12 +41,13 @@
 		7373A4DB2C5A3FE10009E7E4 /* SettingItemDetailsModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingItemDetailsModuleViewController.swift; sourceTree = "<group>"; };
 		738113672C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SettingsModuleViewController+Delegates.swift"; sourceTree = "<group>"; };
 		7381136A2C60EE3F0058AC0D /* UIImage+Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Filter.swift"; sourceTree = "<group>"; };
-		7381136C2C60EED30058AC0D /* FilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterType.swift; sourceTree = "<group>"; };
-		738113752C6363260058AC0D /* PhotoEditorModuleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorModuleViewModel.swift; sourceTree = "<group>"; };
-		738113782C6363380058AC0D /* PhotoEditorModuleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorModuleViewController.swift; sourceTree = "<group>"; };
-		7381137A2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditorModuleViewController+Delegates.swift"; sourceTree = "<group>"; };
-		7381137C2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PhotoEditorModuleViewController+Gestures.swift"; sourceTree = "<group>"; };
-		7381137E2C6397D80058AC0D /* PhotoEditorState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoEditorState.swift; sourceTree = "<group>"; };
+		7381136C2C60EED30058AC0D /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
+		738113752C6363260058AC0D /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
+		738113782C6363380058AC0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7381137A2C6363410058AC0D /* ViewController+Delegates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Delegates.swift"; sourceTree = "<group>"; };
+		7381137C2C6363490058AC0D /* ViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Gestures.swift"; sourceTree = "<group>"; };
+		7381137E2C6397D80058AC0D /* State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
+		7381138D2C64D3240058AC0D /* Collection+SafeIndex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+SafeIndex.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,8 +115,7 @@
 		7373A4D42C5A2E780009E7E4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7381136C2C60EED30058AC0D /* FilterType.swift */,
-				7381137E2C6397D80058AC0D /* PhotoEditorState.swift */,
+				7381136C2C60EED30058AC0D /* Filter.swift */,
 				7373A4D92C5A2EAA0009E7E4 /* SettingsItem.swift */,
 			);
 			path = Models;
@@ -148,7 +149,8 @@
 		738113692C60EE1E0058AC0D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				7381136A2C60EE3F0058AC0D /* UIImage+Filter.swift */,
+				7381138B2C64D3050058AC0D /* Collection */,
+				7381138C2C64D30D0058AC0D /* UIImage */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -156,7 +158,8 @@
 		738113742C6363130058AC0D /* PhotoEditor */ = {
 			isa = PBXGroup;
 			children = (
-				738113752C6363260058AC0D /* PhotoEditorModuleViewModel.swift */,
+				7381137E2C6397D80058AC0D /* State.swift */,
+				738113752C6363260058AC0D /* ViewModel.swift */,
 				738113772C63632C0058AC0D /* ViewController */,
 			);
 			path = PhotoEditor;
@@ -165,11 +168,27 @@
 		738113772C63632C0058AC0D /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				738113782C6363380058AC0D /* PhotoEditorModuleViewController.swift */,
-				7381137A2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift */,
-				7381137C2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift */,
+				738113782C6363380058AC0D /* ViewController.swift */,
+				7381137A2C6363410058AC0D /* ViewController+Delegates.swift */,
+				7381137C2C6363490058AC0D /* ViewController+Gestures.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		7381138B2C64D3050058AC0D /* Collection */ = {
+			isa = PBXGroup;
+			children = (
+				7381138D2C64D3240058AC0D /* Collection+SafeIndex.swift */,
+			);
+			path = Collection;
+			sourceTree = "<group>";
+		};
+		7381138C2C64D30D0058AC0D /* UIImage */ = {
+			isa = PBXGroup;
+			children = (
+				7381136A2C60EE3F0058AC0D /* UIImage+Filter.swift */,
+			);
+			path = UIImage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,18 +261,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7381137D2C6363490058AC0D /* PhotoEditorModuleViewController+Gestures.swift in Sources */,
-				7381137B2C6363410058AC0D /* PhotoEditorModuleViewController+Delegates.swift in Sources */,
+				7381137D2C6363490058AC0D /* ViewController+Gestures.swift in Sources */,
+				7381137B2C6363410058AC0D /* ViewController+Delegates.swift in Sources */,
 				7373A4DC2C5A3FE10009E7E4 /* SettingItemDetailsModuleViewController.swift in Sources */,
+				7381138E2C64D3240058AC0D /* Collection+SafeIndex.swift in Sources */,
 				7373A4BF2C5A0DBD0009E7E4 /* TabBarModuleViewController.swift in Sources */,
 				7373A4BB2C5A0DBD0009E7E4 /* AppDelegate.swift in Sources */,
-				7381136D2C60EED30058AC0D /* FilterType.swift in Sources */,
+				7381136D2C60EED30058AC0D /* Filter.swift in Sources */,
 				7373A4DA2C5A2EAA0009E7E4 /* SettingsItem.swift in Sources */,
 				7373A4BD2C5A0DBD0009E7E4 /* SceneDelegate.swift in Sources */,
-				738113792C6363380058AC0D /* PhotoEditorModuleViewController.swift in Sources */,
+				738113792C6363380058AC0D /* ViewController.swift in Sources */,
 				7373A4D12C5A13250009E7E4 /* SettingsModuleViewController.swift in Sources */,
-				7381137F2C6397D80058AC0D /* PhotoEditorState.swift in Sources */,
-				738113762C6363260058AC0D /* PhotoEditorModuleViewModel.swift in Sources */,
+				7381137F2C6397D80058AC0D /* State.swift in Sources */,
+				738113762C6363260058AC0D /* ViewModel.swift in Sources */,
 				7381136B2C60EE3F0058AC0D /* UIImage+Filter.swift in Sources */,
 				738113682C5CF5170058AC0D /* SettingsModuleViewController+Delegates.swift in Sources */,
 				7373A4D62C5A2E870009E7E4 /* SettingsModuleViewModel.swift in Sources */,

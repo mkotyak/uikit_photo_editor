@@ -1,8 +1,8 @@
 import Foundation
 
-enum FilterType: String, CaseIterable {
-    case original = "ORIGINAL"
-    case mono = "MONO"
+enum Filter: String, CaseIterable {
+    case original
+    case mono
 
     var name: String? {
         switch self {

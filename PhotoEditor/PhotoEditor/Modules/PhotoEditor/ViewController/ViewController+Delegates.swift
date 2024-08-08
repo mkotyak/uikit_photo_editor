@@ -20,15 +20,6 @@ extension PhotoEditorModuleViewController: UIImagePickerControllerDelegate {
         setupPhotoEditorView()
         dismiss(animated: true)
     }
-
-    private func resetImageView() {
-//        imageView?.removeFromSuperview()
-//        imageView = nil
-    }
-
-    private func resetSegmentedControl() {
-//        segmentedControl.selectedSegmentIndex = 0
-    }
 }
 
 // MARK: - UIGestureRecognizerDelegate

@@ -63,11 +63,7 @@ class PhotoEditorModuleViewController: UIViewController {
     private func setupBinding() {
         viewModel.state
             .sink { [weak self] newState in
-                guard let self else {
-                    return
-                }
-
-                updateImageView(with: newState.filteredImage)
+                self?.imageView.image = newState.filteredImage
             }
             .store(in: &cancellables)
     }
@@ -89,10 +85,6 @@ class PhotoEditorModuleViewController: UIViewController {
             filters.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15),
             filters.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15)
         ])
-    }
-
-    private func updateImageView(with newImage: UIImage?) {
-        imageView.image = newImage
     }
 
     // MARK: - UI Elements
@@ -178,7 +170,7 @@ class PhotoEditorModuleViewController: UIViewController {
     }
 
     private lazy var filters: UISegmentedControl = {
-        let segmentedControl: UISegmentedControl = .init(items: viewModel.filters.map { $0.rawValue })
+        let segmentedControl: UISegmentedControl = .init(items: viewModel.availableFilters.map { $0.controlTitle })
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.addTarget(
             self,
@@ -190,7 +182,10 @@ class PhotoEditorModuleViewController: UIViewController {
     }()
 
     @objc private func filterChanged(_ sender: UISegmentedControl) {
-        let selectedFilter = viewModel.filters[sender.selectedSegmentIndex]
+        guard let selectedFilter = viewModel.availableFilters[safe: sender.selectedSegmentIndex] else {
+            return
+        }
+
         viewModel.viewDidSelectFilter(selectedFilter)
     }
 }

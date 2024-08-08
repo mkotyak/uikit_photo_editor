@@ -1,7 +1,7 @@
 import UIKit
 
 extension UIImage {
-    func withFilter(_ filterType: FilterType) -> UIImage {
+    func withFilter(_ filterType: Filter) -> UIImage {
         guard let input = CIImage(image: self) else {
             return self
         }
